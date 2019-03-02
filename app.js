@@ -5,13 +5,14 @@ const ASSISTANT_IAM_URL = 'https://gateway.watsonplatform.net/assistant/api';
 const ASSISTANT_IAM_APIKEY = '';
 
 var chatbot = new watson({
-
+    'username':'d2b20928-8536-4d46-9f4a-86c0cf2dcf7f',
+    'password':'MaadWhsaXdlw',
     'version': '2019-03-02',
-    'url': ASSISTANT_IAM_URL || '<url>',
-    'iam_apikey': ASSISTANT_IAM_APIKEY || '<iam_apikey>',
+    'url': ASSISTANT_IAM_URL,
     'iam_url': 'https://iam.bluemix.net/identity/token'
 
 });
+
 
 
 var payload = {
@@ -24,7 +25,6 @@ var payload = {
 chatbot.message(payload, function trataResposta(err, resposta){
     if(err){
         console.log(err)
-        return;
     }
 
     if(resposta.output.text.length > 0){
