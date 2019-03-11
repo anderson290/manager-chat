@@ -1,5 +1,3 @@
-const watson = require('watson-developer-cloud/assistant/v1');
-
 const ASSISTANT_IAM_URL = 'https://gateway.watsonplatform.net/assistant/api';
 
 const ASSISTANT_IAM_APIKEY = '';
@@ -14,21 +12,8 @@ var chatbot = new watson({
 });
 
 
-
-
 var payload = {
     workspace_id: 'e7a92d12-195e-475d-a8e4-56e9ad5ee1c5',
     context: {},
     input: {}
 };
-
-
-chatbot.message(payload, function trataResposta(err, resposta){
-    if(err){
-        console.log(err)
-    }
-
-    if(resposta.output.text.length > 0){
-        console.log(resposta);
-    }
-});
