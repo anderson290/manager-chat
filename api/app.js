@@ -48,6 +48,12 @@ app.post('/conversation/', (req, res) => {
     context: {},
     input: {text}
 
+//     {
+//         "message": "Bom dia",
+//        "context" : {
+           
+//        }
+//    }
    }
 
     chatbot.message(payload2, (err, resposta) => {
