@@ -9,6 +9,8 @@
   "author": "Anderson",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "watson-developer-cloud": "^3.18.1"
   }
 }
