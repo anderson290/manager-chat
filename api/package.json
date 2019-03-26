@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-   "start": "nodemon ./bin/server.js"
+    "start": "nodemon ./bin/server.js"
   },
   "author": "Anderson",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "debug": "^4.1.1",
     "express": "^4.16.4",
     "http": "0.0.0",
+    "mongoose": "^5.4.20",
     "nodemon": "^1.18.10",
     "watson-developer-cloud": "^3.18.1"
   }
