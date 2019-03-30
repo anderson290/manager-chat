@@ -1,7 +1,7 @@
 'use strict';
 
-const mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 
 const schema = new Schema({
@@ -18,7 +18,7 @@ const schema = new Schema({
         type: String
     },
     sex: {
-        type: Boolean
+        type: String
     },
     conversation: {
         type: []
@@ -26,4 +26,4 @@ const schema = new Schema({
 });
 
 
-module.exports.Conversations = mongoose.model('conversations', schema, 'conversations');
+module.exports = mongoose.model('user', schema);
