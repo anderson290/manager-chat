@@ -40,7 +40,8 @@ exports.sendMessage =  (req, res) => {
         input: { text }
     }
 
-    chatbot.message(payload2, (err, resposta) => {       
+    chatbot.message(payload2, (err, resposta) => {  
+        console.log(resposta)     
         return res.status(201).send(resposta)
     });
 }
