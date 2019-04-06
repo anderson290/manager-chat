@@ -17,10 +17,10 @@ const chatbot = new watson({
 
 });
 
-exports.createUser =  (req, res) => {
+exports.createUser = async (req, res) => {
     let user = new UserConversation(req.body)
 
-   user.save()    
+   await user.save()    
     .then(x=>{
         console.log(req.body)
         res.status(201).send({message: "User cadastrado"})
@@ -31,17 +31,39 @@ exports.createUser =  (req, res) => {
 
     });
 }
-
-exports.sendMessage =  (req, res) => {
-    let text = req.body.message;
-    var payload2 = {
+exports.getFirst = async (req, res) =>{
+    let payload = {
         workspace_id: 'e7a92d12-195e-475d-a8e4-56e9ad5ee1c5',
         context: {},
-        input: { text }
+        input: {}
+    };
+    chatbot.message(payload, function trataResposta(err, resposta){
+        if(err){
+            console.log(err)
+        }
+    
+        res.status(200).send({message: resposta.output.text[0]})
+        if(resposta.output.text.length > 0){
+          console.log('======================================');
+          console.log(resposta.output.text[0]);
+          console.log('======================================');
+        }    
+    });
+}
+
+exports.sendMessage =  async (req, res) => {
+    let text = req.body.message;
+    
+    var payload2 = {
+        workspace_id: 'e7a92d12-195e-475d-a8e4-56e9ad5ee1c5',
+        context: req.body.context || {},
+        input: { text } || {}
     }
 
-    chatbot.message(payload2, (err, resposta) => {  
-        console.log(resposta)     
+    await chatbot.message(payload2, (err, resposta) => {  
+        console.log(resposta.output.text[0])   
+        console.log('======================================');
+
         return res.status(201).send(resposta)
     });
 }

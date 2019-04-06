@@ -8,18 +8,24 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
 import { MessageService } from 'src/services/message.service';
+import { HomeComponent } from './pages/home/home.component';
+import { LayoutModule } from './layout/layout.module';
+import { SharedModule } from './shared/shared.module';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagesComponent
+    PagesComponent,
+    HomeComponent,
+    AboutComponent,
+    ContactComponent
   ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    FormsModule,
+  imports: [  
     AppRoutingModule,
+    SharedModule.forRoot(),
     HttpClientModule
   ],
   providers: [MessageService],

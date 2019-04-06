@@ -10,22 +10,50 @@ import { MessageService } from 'src/services/message.service';
 export class PagesComponent implements OnInit {
 
 
-  userModel : UserModel = new UserModel;
-  message:any;
+  userModel: UserModel = new UserModel;
+  message: any;
+  context: any = {};
+  req: any;
+  chat: any;
+  responseMessage: any;
+  responseMessageArr: any;
+  responseUser: any;
   constructor(private uibotService: MessageService) { }
 
   ngOnInit() {
-  }
-  sendUser(){
-   let x = {
-      "message": this.message,
-      "context" : {
-      }
+    this.responseMessageArr = []
+    this.responseUser = []
+    this.getMessage();
   }
 
-  this.userModel.name = this.message;
-    this.uibotService.sendMessage(x).subscribe(res=>{
-      console.log(res);
-    })
+  async getMessage() {
+    let x = await this.uibotService.getMessage();
+    this.chat = x['message'];
+  }
+  async sendUser() {
+    this.req = {
+      "message": this.message,
+      "context": {}
+    }
+
+    if (this.message == 'Anderson') {
+      this.req = {
+        "message": this.message,
+        "context": {},
+        "origin": 'user'
+      }
+    }
+
+
+
+    this.userModel.name = this.message;
+
+
+    let responseWatson = await this.uibotService.sendMessage(this.req);
+    console.log(responseWatson)
+    this.responseMessage = responseWatson['output'].text[0];
+    this.responseUser.push(this.message);
+
+    this.responseMessageArr.push(this.responseMessage)
   }
 }

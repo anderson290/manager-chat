@@ -6,6 +6,7 @@ const app = express();
 const cors = require('cors')
 
 mongoose.connect('mongodb+srv://legalChatbotDb:1QazxsW229@legalchatbot-errfy.mongodb.net/test?retryWrites=true')
+app.use(cors({enableOrigin:"*"}));
 
 app.use(bodyParser.json()); 
 
@@ -18,9 +19,6 @@ const UserConversation = require('./models/user');
 const index = require('./routes/index');
 const conversationRoute = require('./routes/watson.route');
 
-
-
 app.use('/', index);
 app.use('/conversation', conversationRoute);
-app.use(cors({enableOrigin:"*"}));
 module.exports = app;

@@ -10,11 +10,14 @@ export class MessageService {
 
   }  
   private headerL = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin':'*'
+      'Content-Type': 'application/json'
     });
   
-  sendMessage(message){
-      return this.httpClient.post('localhost:3000/conversation/send', message, { headers: this.headerL });
+    async getMessage(){     
+      return await this.httpClient.get('http://localhost:4200/api/conversation/first', { headers: this.headerL }).toPromise();
+    }
+
+  async sendMessage(message){
+      return await this.httpClient.post('http://localhost:4200/api/conversation/send', message, { headers: this.headerL }).toPromise();
   }
 }

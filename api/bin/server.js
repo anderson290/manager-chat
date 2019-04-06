@@ -71,22 +71,4 @@ function onListening() {
       : 'port ' + addr.port;
     debug('Listening on ' + bind);
   }
-// app.listen(port, () => console.log(`Running on port ${port}`));
 
-
-var payload = {
-    workspace_id: 'e7a92d12-195e-475d-a8e4-56e9ad5ee1c5',
-    context: {},
-    input: {}
-};
-
-chatbot.message(payload, function trataResposta(err, resposta){
-    if(err){
-        console.log(err)
-    }
-
-    if(resposta.output.text.length > 0){
-        console.log(resposta);
-    }
-
-});
