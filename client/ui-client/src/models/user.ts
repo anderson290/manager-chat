@@ -5,11 +5,13 @@ export class UserModel {
     address: string;
     sex: string;
     maritalStatus: string;
+    conversation: Array<any>;
     constructor() {
         this.name = "";
         this.age = 0;
         this.address = "";
         this.sex = "";
         this.maritalStatus = "";        
+        this.conversation = [];
     }
 }

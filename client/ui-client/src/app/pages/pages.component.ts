@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/models/user';
 import { MessageService } from 'src/services/message.service';
+import { ConversationModel } from 'src/models/conversation';
 
 @Component({
   selector: 'app-pages',
@@ -21,6 +22,10 @@ export class PagesComponent implements OnInit {
   responseMessageArr: any;
   responseUser: any;
 
+  user: any = {};
+  users: any;
+
+  conversationUser: any;
   constructor(private uibotService: MessageService) { }
 
   ngOnInit() {
@@ -32,31 +37,62 @@ export class PagesComponent implements OnInit {
   async getMessage() {
     let x = await this.uibotService.getMessage();
     this.chat = x['message'];
+    console.log(x)
   }
   async sendUser() {
-    this.req = {
-      "message": this.message,
-      "context": {}
-    }
 
-    if (this.message == 'Anderson') {
+    this.users = await this.uibotService.getUsers();
+
+
+    // if(this.users != []){
+    //   for (let x of this.users) {
+
+    //     if (this.user._id == x._id) {
+    //       await this.uibotService.updateUser(this.user);
+    //       console.log('UPDATE', x);
+    //       this.req = {
+    //         "message": this.message,
+    //         "context": this.userModel.conversation[0].context
+    //       }
+  
+    //       console.log("REQUISIÇÃO", this.req)
+    //     } else {
+    //       this.user = await this.uibotService.createConversation(this.userModel);
+    //       console.log('CRIOU')
+    //       this.req = {
+    //         "message": this.message,
+    //         "context": {}
+    //       }
+  
+    //     }
+  
+  
+    //   }
+    // }else{
+    //   this.user = await this.uibotService.createConversation(this.userModel);
+    //       console.log('CRIOU')
+    //   this.req = {
+    //     "message": this.message,
+    //     "context": {}
+    //   }
+    // }
+  
+
+    this.user = await this.uibotService.createConversation(this.userModel);
+          console.log('CRIOU')
       this.req = {
         "message": this.message,
-        "context": {},
-        "origin": 'user'
+        "context": {}
       }
-    }
+
+    let response = await this.uibotService.sendMessage(this.req);
+
+    this.conversationUser = response;
 
 
+    this.userModel.conversation[0] = this.conversationUser;
 
-    this.userModel.name = this.message;
+    await this.uibotService.updateUser(this.userModel);
 
-
-    let responseWatson = await this.uibotService.sendMessage(this.req);
-    console.log(responseWatson)
-    this.responseMessage = responseWatson['output'].text[0];
-    this.responseUser.push(this.message);
-
-    this.responseMessageArr.push(this.responseMessage)
   }
 }

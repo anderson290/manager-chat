@@ -20,48 +20,77 @@ const chatbot = new watson({
 exports.createUser = async (req, res) => {
     let user = new UserConversation(req.body)
 
-   await user.save()    
-    .then(x=>{
-        console.log(req.body)
-        res.status(201).send({message: "User cadastrado"})
+    await user.save()
+        .then(x => {
+            console.log(req.body)
+            res.status(201).send({ message: "User cadastrado" })
 
-    }).catch(e=>{
-        res.status(400).send({message: "User não cadastrado" + e})
+        }).catch(e => {
+            res.status(400).send({ message: "User não cadastrado" + e })
 
 
-    });
+        });
 }
-exports.getFirst = async (req, res) =>{
+exports.getFirst = async (req, res) => {
     let payload = {
         workspace_id: 'e7a92d12-195e-475d-a8e4-56e9ad5ee1c5',
         context: {},
         input: {}
     };
-    chatbot.message(payload, function trataResposta(err, resposta){
-        if(err){
+    chatbot.message(payload, function trataResposta(err, resposta) {
+        if (err) {
             console.log(err)
         }
-    
-        res.status(200).send({message: resposta.output.text[0]})
-        if(resposta.output.text.length > 0){
-          console.log('======================================');
-          console.log(resposta.output.text[0]);
-          console.log('======================================');
-        }    
+
+        res.status(200).send({ message: resposta.output.text[0] })
+        if (resposta.output.text.length > 0) {
+            console.log('======================================');
+            console.log(resposta.output.text[0]);
+            console.log('======================================');
+        }
     });
 }
 
-exports.sendMessage =  async (req, res) => {
+exports.getUsers = async (req, res) => {
+
+    UserConversation.find().then(users=>{
+        console.log(users)
+             res.status(200).send(users)
+    })
+
+
+}
+
+exports.updateUser = async (req, res) => {
+    UserConversation.update(req.body).then(user=>{
+        console.log(user)
+             res.status(200).send({message: 'Atualizado'})
+    })
+}
+
+exports.sendMessage = async (req, res) => {
     let text = req.body.message;
-    
+
     var payload2 = {
         workspace_id: 'e7a92d12-195e-475d-a8e4-56e9ad5ee1c5',
         context: req.body.context || {},
         input: { text } || {}
     }
 
-    await chatbot.message(payload2, (err, resposta) => {  
-        console.log(resposta.output.text[0])   
+    await chatbot.message(payload2, (err, resposta) => {
+
+        if (resposta.output.text[0] == undefined) {
+            console.log(resposta.output.generic.title)
+            for (let i of resposta.output.generic.title.options) {
+                console.log(resposta.output.generic.title.options[i])
+
+            }
+
+        }else{
+        console.log(resposta.output.text[0])
+
+        }
+
         console.log('======================================');
 
         return res.status(201).send(resposta)
