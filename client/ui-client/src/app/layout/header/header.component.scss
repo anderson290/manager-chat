@@ -1,0 +1,25 @@
+
+@import './../../../assets/scss/fonts.scss';
+@import './../../../assets/scss/colors.scss';
+
+.navbar{
+    font-family: $poppins;
+}
+
+.nav-wrapper{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.nav-item{
+    margin-right: 50px;
+}
+
+.nav-link{
+    color: $white;
+    transition: color 1s;
+}
+
+.nav-link:hover{
+    color: $dark-blue;
+}

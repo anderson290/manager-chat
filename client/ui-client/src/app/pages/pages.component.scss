@@ -1,0 +1,92 @@
+
+@import './../../assets/scss/fonts.scss';
+@import './../../assets/scss/colors.scss';
+
+.title{
+    font-family: $poppins;
+    font-weight: bold;
+    font-size: 5em;
+    margin-top: 140px;
+    color: $white;
+}
+
+.subtitle{
+    font-family: $poppins-light;
+    font-size: 24px;
+    color: $white;
+}
+.text{
+    font-family: $poppins-light;
+    font-size: 14px;
+    color: $black;
+
+
+}
+.light-text{
+    font-family: $poppins-light;
+    font-size: 26px;
+    color: $dark-blue;
+
+}
+
+.regular-subtitle{
+    font-family: $poppins-regular;
+    color: $dark-blue;
+    font-size: 51px;
+}
+
+.bold-text{
+    font-weight: bold;
+}
+
+.comaImage{
+    width: 22%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bolder-title{
+    font-size: 51px;
+    font-weight: bold;
+    font-family: $poppins;
+    color: $dark-blue;
+}
+
+.box-contact{
+    box-shadow: 0px 5px 15px black;
+    padding: 20px;
+    padding-bottom: 60px;
+    height: 100%;
+}
+
+.spaced-text{
+    letter-spacing: 4px;
+    font-weight: bold;
+    color: $dark-blue;
+}
+
+.bgImage{
+    width: 100%;
+    height: 700px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.btn-start{
+    background: transparent;
+    border: 2px solid $dark-blue;
+    border-radius: 30px;
+    padding: 5px 40px;
+    font-family: $poppins-light;
+    color: $dark-blue;
+    text-transform: uppercase;
+    transition: background 0.5s;
+}
+
+.btn-start:hover{
+    background: $dark-blue;
+    color: $white;
+}
+

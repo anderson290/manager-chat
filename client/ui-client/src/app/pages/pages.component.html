@@ -1,4 +1,148 @@
-<div class="container">
+<div class="bgImage img-fluid" [ngStyle]="{'background-image': 'url('+ bgPicture +')'}">
+  <app-header></app-header>
+  <section id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <h1 id="home" class="title">LegalChat</h1>
+          <h2 class="subtitle">Seu acessor Jurídico Online!!!</h2>
+          <p class="white-text">Tire suas dúvidas em relação ao
+            <span class="bold-text">Código de Defesa do Consumidor</span></p>
+        </div>
+      </div>
+      <div class="row m-t-400">
+        <div class="col-6"></div>
+        <div class="col-12 col-md-6">
+          <div class="center-content">
+            <img src="assets/images/Imagem 4.png" alt="">
+            <p class="text-center">
+              Precisa tirar uma dúvida rápida sobre um a <span class="bold-text">compra de produto</span> ou
+              <span class="bold-text">contratação de um serviço</span>?
+              Consulte nosso LegalChat, é rápido e prático.
+            </p>
+            <input type="submit" class="btn btn-start" value="Começar" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="row m-t-100">
+        <div class="col-12 col-md-6">
+          <p class="spaced-text">QUEM SOMOS</p>
+          <h1 class="bolder-title">GRUPO</h1>
+          <h2 class="regular-subtitle">ADVOGADOS</h2>
+          <h2 class="regular-subtitle">ESPECIALIZADOS</h2>
+          <h4 class="light-text">NO CÓDIGO DE DEFESA</h4>
+          <h4 class="light-text"> DO CONSUMIDOR</h4>
+        </div>
+        <div class="col-12 col-md-6">
+          <h2 class="light-text">Title</h2>
+          <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+            been
+            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus
+            PageMaker including versions of Lorem Ipsum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="row center-content">
+        <div class="col-12 m-t-100">
+
+          <div class="center-content">
+            <p class="spaced-text">NOSSOS SERVIÇOS</p>
+
+            <img src="assets/images/Imagem 5.png" class="img-fluid" alt="">
+            <div class="justify-text">
+              <h2 class="light-text">Title</h2>
+              <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                been
+                the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into
+                electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of
+                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+                Aldus
+                PageMaker including versions of Lorem Ipsum.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="row m-t-100">
+        <div class="col-12 col-md-6">
+          <div class="box-contact">
+            <h3 class="spaced-text">CONTATO</h3>
+            <div class="center-content">
+              <p class="text m-t-50">
+                legalchat@legalchat.com.br
+              </p>
+              <div class="m-t-50">
+                <p class="text">
+                  Telefone: </p>
+                <p class="text"> (11) 1234-8997</p>
+                <p class="text"> (11) 91234-8997</p>
+
+              </div>
+              <div class="m-t-50">
+                <p class="text">Rua dos advogados, 643 </p>
+                <p class="text"> Parque das Leis</p>
+                <p class="text"> São Paulo-SP</p>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section>
+    <div class="container">
+      
+      <div class="row m-t-100">
+        <!-- <div class="comaImage" [ngStyle]="{'background-image': 'url('+ bgPictureComa +')'}"></div> -->
+
+          <div class="col-12 col-md-6">
+              <i>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only</i>
+          </div>
+          <div class="col-12 col-md-6">
+
+              <img src="assets/images/smileMan.png" class="img-fluid" alt="">
+          </div>
+        </div>
+       
+      </div>
+  
+  </section>
+  <app-footer></app-footer>
+
+</div>
+
+<!-- <div class="container">
   <div class="row">
       <div class="col-6">
           <div style="text-align: right;" *ngFor="let j of responseUser">
@@ -17,4 +161,4 @@
 
 
 <textarea name="" [(ngModel)]="message" id="" cols="30" rows="10"></textarea>
-<input type="submit" (click)="sendUser()" name="" id="">
+<input type="submit" (click)="sendUser()" name="" id=""> -->

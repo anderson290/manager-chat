@@ -1,6 +1,5 @@
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<nav class="navbar navbar-expand-md justify-content-center" >
   <!-- Brand -->
-  <a class="navbar-brand mr-auto" href="#">LOGO</a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -9,15 +8,18 @@
 
   <!-- Navbar links -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav nav-wrapper white-text">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="[ '/' ]">Home</a>
+        <a class="nav-link" href="#home">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  [routerLink]="[ '/about-us' ]">Quem Somos</a>
+        <a class="nav-link" href="#about" >Quem Somos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  [routerLink]="[ '/contact' ]">Contato</a>
+        <a class="nav-link" href="#services">Serviços</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact">Contato</a>
       </li> 
     </ul>
   </div> 

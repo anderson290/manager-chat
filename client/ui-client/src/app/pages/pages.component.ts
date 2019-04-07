@@ -10,6 +10,8 @@ import { MessageService } from 'src/services/message.service';
 export class PagesComponent implements OnInit {
 
 
+  bgPicture: any = 'assets/images/image1.png';
+  bgPictureComa: any = 'assets/images/backComa.png';
   userModel: UserModel = new UserModel;
   message: any;
   context: any = {};
@@ -18,6 +20,7 @@ export class PagesComponent implements OnInit {
   responseMessage: any;
   responseMessageArr: any;
   responseUser: any;
+
   constructor(private uibotService: MessageService) { }
 
   ngOnInit() {

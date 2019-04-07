@@ -1,0 +1,41 @@
+
+///margins///
+
+
+.m-l-5perc{
+    margin-left: 5%;
+}
+.m-t-20{
+    margin-top: 20px;
+}
+.m-t-50{
+    margin-top: 50px !important;
+}
+.m-t-100{
+    margin-top: 100px;
+}
+.m-t-400{
+    margin-top: 400px;
+}
+
+.white-text{
+    color: $white;
+}
+
+
+
+/////float/////
+
+.justify-text{
+    text-align: justify;
+    margin-top: 20px;
+    padding: 0px 28%;
+    @media (max-width: 960px){
+        padding: 0px;
+    }
+}
+
+.center-content{
+    margin: 0 auto;
+    text-align: center;
+}
