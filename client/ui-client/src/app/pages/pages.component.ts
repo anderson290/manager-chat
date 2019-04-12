@@ -72,7 +72,6 @@ export class PagesComponent implements OnInit {
       this.req = {
         "message": this.message,
         "context": {},
-
       }
 
       this.responseMessage = await this.uibotService.sendMessage(this.req);
