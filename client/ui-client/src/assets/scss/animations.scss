@@ -1,0 +1,19 @@
+@import '../node_modules/motion-ui/src/motion-ui';
+
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
+
+h1{
+    @include mui-animation(fade, slide($direction: up));
+    animation-duration: 1s;
+}
+
+h2{
+    @include mui-animation(fade, slide($direction: up));
+    animation-duration: 1s;
+}
+
+p{
+    @include mui-spin()
+}

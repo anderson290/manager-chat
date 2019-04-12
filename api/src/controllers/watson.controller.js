@@ -79,18 +79,8 @@ exports.sendMessage = async (req, res) => {
 
     await chatbot.message(payload2, (err, resposta) => {
 
-        if (resposta.output.text[0] == undefined) {
-            console.log(resposta.output.generic.title)
-            for (let i of resposta.output.generic.title.options) {
-                console.log(resposta.output.generic.title.options[i])
-
-            }
-
-        }else{
-        console.log(resposta.output.text[0])
-
-        }
-
+        
+        console.log("AQUI", resposta)
         console.log('======================================');
 
         return res.status(201).send(resposta)

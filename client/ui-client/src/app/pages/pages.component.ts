@@ -11,7 +11,7 @@ import { ConversationModel } from 'src/models/conversation';
 export class PagesComponent implements OnInit {
 
 
-  bgPicture: any = 'assets/images/image1.png';
+  bgPicture: any = 'assets/images/header.svg';
   bgPictureComa: any = 'assets/images/backComa.png';
   userModel: UserModel = new UserModel;
   message: any;
@@ -22,15 +22,19 @@ export class PagesComponent implements OnInit {
   responseMessageArr: any;
   responseUser: any;
 
+
   user: any = {};
   users: any;
 
   conversationUser: any;
+  cont: number = 1;
   constructor(private uibotService: MessageService) { }
 
   ngOnInit() {
     this.responseMessageArr = []
     this.responseUser = []
+    sessionStorage.setItem('contextId', '');
+
     this.getMessage();
   }
 
@@ -41,7 +45,54 @@ export class PagesComponent implements OnInit {
   }
   async sendUser() {
 
-    this.users = await this.uibotService.getUsers();
+
+
+    if (sessionStorage.getItem('contextId') != '') {
+      console.log("Segundo")
+
+      this.req = JSON.parse(sessionStorage.getItem('contextId'));
+      this.req.message = this.message;    
+
+      this.responseMessage = await this.uibotService.sendMessage(this.req);
+      sessionStorage.setItem('contextId', JSON.stringify(this.responseMessage));
+      this.userModel.name = this.responseMessage.context.nome_user;
+      this.userModel.age = this.responseMessage.context.age_user;
+      this.userModel.location = this.responseMessage.context.location;
+      this.userModel.maritalStatus = this.responseMessage.context.maritalStatus;
+      this.userModel.sex = this.responseMessage.context.genero;
+      this.userModel.conversation = this.responseMessage;
+
+      await this.uibotService.updateUser(this.userModel);      
+      
+      console.log("USER", this.userModel);
+
+    } else {
+      console.log("Primeiro")
+
+      this.req = {
+        "message": this.message,
+        "context": {},
+
+      }
+
+      this.responseMessage = await this.uibotService.sendMessage(this.req);
+      sessionStorage.setItem('contextId', JSON.stringify(this.responseMessage));
+      this.userModel.conversation = this.responseMessage;
+      await this.uibotService.createConversation(this.userModel);      
+
+    }
+
+
+
+    //   this.conversationUser = response;
+
+
+    //   this.userModel.conversation[0] = this.conversationUser;
+
+    //   await this.uibotService.updateUser(this.userModel);
+
+    // this.users = await this.uibotService.getUsers();
+    // this.cont++;
 
 
     // if(this.users != []){
@@ -54,7 +105,7 @@ export class PagesComponent implements OnInit {
     //         "message": this.message,
     //         "context": this.userModel.conversation[0].context
     //       }
-  
+
     //       console.log("REQUISIÇÃO", this.req)
     //     } else {
     //       this.user = await this.uibotService.createConversation(this.userModel);
@@ -63,10 +114,10 @@ export class PagesComponent implements OnInit {
     //         "message": this.message,
     //         "context": {}
     //       }
-  
+
     //     }
-  
-  
+
+
     //   }
     // }else{
     //   this.user = await this.uibotService.createConversation(this.userModel);
@@ -76,23 +127,10 @@ export class PagesComponent implements OnInit {
     //     "context": {}
     //   }
     // }
-  
-
-    this.user = await this.uibotService.createConversation(this.userModel);
-          console.log('CRIOU')
-      this.req = {
-        "message": this.message,
-        "context": {}
-      }
-
-    let response = await this.uibotService.sendMessage(this.req);
-
-    this.conversationUser = response;
 
 
-    this.userModel.conversation[0] = this.conversationUser;
 
-    await this.uibotService.updateUser(this.userModel);
+
 
   }
 }
