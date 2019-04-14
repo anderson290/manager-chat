@@ -11,28 +11,39 @@ import { ConversationModel } from 'src/models/conversation';
 export class PagesComponent implements OnInit {
 
 
-  bgPicture: any = 'assets/images/header.svg';
+  bgPicture: any = 'assets/images/header.png';
   bgPictureComa: any = 'assets/images/backComa.png';
-  userModel: UserModel = new UserModel;
+  userModel: UserModel = new UserModel();
   message: any;
   context: any = {};
-  req: any;
+  req: any;  
   chat: any;
   responseMessage: any;
   responseMessageArr: any;
   responseUser: any;
-
+  userId: any;
 
   user: any = {};
   users: any;
 
+  par:boolean = false;
+  chatBox: boolean = false;
+
   conversationUser: any;
   cont: number = 1;
-  constructor(private uibotService: MessageService) { }
+
+  opRes: boolean = false;
+  options: any;
+  constructor(private uibotService: MessageService) {
+    sessionStorage.setItem('contextId', '');
+    this.userModel = new UserModel();
+   }
 
   ngOnInit() {
-    this.responseMessageArr = []
-    this.responseUser = []
+    this.responseMessageArr = [];
+    this.responseUser = [];
+
+    this.options = [];
     sessionStorage.setItem('contextId', '');
 
     this.getMessage();
@@ -43,6 +54,20 @@ export class PagesComponent implements OnInit {
     this.chat = x['message'];
     console.log(x)
   }
+
+  async setOption(option){
+    this.message = option;
+    this.req = JSON.parse(sessionStorage.getItem('contextId'));
+    this.req.message = this.message;
+    this.responseMessageArr.push(this.message);  
+    this.responseMessage = await this.uibotService.sendMessage(this.req);
+    sessionStorage.setItem('contextId', JSON.stringify(this.responseMessage));
+    this.responseMessageArr.push(this.responseMessage.output.text); 
+    this.opRes = false;
+    this.userModel.conversation = this.responseMessage;
+
+      await this.uibotService.updateUser(this.userModel);  
+  }
   async sendUser() {
 
 
@@ -51,10 +76,21 @@ export class PagesComponent implements OnInit {
       console.log("Segundo")
 
       this.req = JSON.parse(sessionStorage.getItem('contextId'));
-      this.req.message = this.message;    
+      this.req.message = this.message;
+      this.responseMessageArr.push(this.message);    
 
       this.responseMessage = await this.uibotService.sendMessage(this.req);
       sessionStorage.setItem('contextId', JSON.stringify(this.responseMessage));
+
+      if(this.responseMessage.output.generic[0].options){
+        this.responseMessageArr.push(this.responseMessage.output.generic[0].title);
+        this.options = this.responseMessage.output.generic[0].options;
+        this.opRes = true;
+      }else{
+        this.responseMessageArr.push(this.responseMessage.output.text); 
+        this.opRes = false;
+      }
+
       this.userModel.name = this.responseMessage.context.nome_user;
       this.userModel.age = this.responseMessage.context.age_user;
       this.userModel.location = this.responseMessage.context.location;
@@ -69,19 +105,30 @@ export class PagesComponent implements OnInit {
     } else {
       console.log("Primeiro")
 
+      this.responseMessageArr.push(this.message);
+    
+    
+
+
       this.req = {
         "message": this.message,
         "context": {},
       }
 
       this.responseMessage = await this.uibotService.sendMessage(this.req);
+
+      
+      this.responseMessageArr.push(this.responseMessage.output.text); 
+      
+         
       sessionStorage.setItem('contextId', JSON.stringify(this.responseMessage));
       this.userModel.conversation = this.responseMessage;
-      await this.uibotService.createConversation(this.userModel);      
-
+       this.userId = await this.uibotService.createConversation(this.userModel);      
+      console.log("ID", this.userId)
+      //  sessionStorage.setItem('userId', id._id);
     }
 
-
+   
 
     //   this.conversationUser = response;
 
@@ -131,5 +178,14 @@ export class PagesComponent implements OnInit {
 
 
 
+  }
+
+  openChat(){
+
+    this.chatBox = true;
+  
+  }
+  closeChat(){
+    this.chatBox = false;
   }
 }

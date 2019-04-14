@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'src/services/message.service';
 import { SharedModule } from './shared/shared.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,

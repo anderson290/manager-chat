@@ -1,7 +1,11 @@
 
 ///margins///
 
+.m-10{
+    
+    margin: 10px;
 
+}
 .m-l-5perc{
     margin-left: 5%;
 }
@@ -22,6 +26,9 @@
     color: $white;
 }
 
+.op-0{
+    opacity: 0;
+}
 
 
 /////float/////
@@ -34,9 +41,22 @@
         padding: 0px;
     }
 }
+.float-r{
+    float: right;
+}
+
+.float-l{
+    float: left;
+}
 
 .center-content{
     margin: 0 auto;
     text-align: center;
  
+}
+
+/////////CURSOR//////////
+
+.pointer{
+    cursor: pointer;
 }

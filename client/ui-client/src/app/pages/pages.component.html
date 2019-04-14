@@ -1,11 +1,48 @@
 <div class="bgImage img-fluid" [ngStyle]="{'background-image': 'url('+ bgPicture +')'}">
   <app-header></app-header>
+  <span *ngIf="chatBox==false" class="chat-button" (click)="openChat()"><i class="fas fa-comments"></i></span>
+
+  <div *ngIf="chatBox==true" class="chat-box">
+    <div class="headerBox">
+      <i class="fas fa-times float-r pointer" (click)="closeChat()"></i>
+    </div>
+    <div class="chat">
+      <div class="m-10">
+        <p class="bot-color">{{chat}}</p>
+
+        <div *ngFor="let i of responseMessageArr; let ind = index;"
+          [ngClass]="ind%2 == 0 ? 'text-right' : 'text-left' ">
+          <p [ngClass]="ind%2 == 0 ? 'user-color' : 'bot-color' ">{{i}}</p>
+        </div>
+
+        <div *ngIf="opRes == true">
+            <div class="options-wrapper">
+          <div *ngFor="let op of options">       
+          
+                <p class="btn-option pointer" (click)="setOption(op.label)">{{op.label}}</p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="footerBox">
+
+      <input type="text" (keyup.enter)="sendUser()" [(ngModel)]="message" class="form-control send-text-input" name=""
+        placeholder="Digite sua dúvida.." id="">
+
+      <button type="button" (click)="sendUser()" class="form-control btn send-text-button"><i
+          class="fas fa-arrow-circle-right"></i></button>
+    </div>
+  </div>
+
   <section id="home">
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-6">
           <h1 id="home" class="title">LegalChat</h1>
-          <h2 class="subtitle">Seu acessor Jurídico Online!!!</h2>
+          <h2 class="subtitle">Seu assessor Jurídico Online!!!</h2>
           <p class="white-text">Tire suas dúvidas em relação ao
             <span class="bold-text">Código de Defesa do Consumidor</span></p>
         </div>
@@ -116,30 +153,17 @@
           </div>
         </div>
 
-        <div class="col-12">
-          <div class="col-12">
-            {{chat}}
-            <div *ngFor="let i of responseMessageArr">
-              {{i}}
-            </div>
-          </div>
-          <div class="col-12">
-            <div style="text-align: right;" *ngFor="let j of responseUser">
-              {{j}}
-            </div>
-          </div>
 
-        </div>
 
 
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-12 m-t-100">
 
           <textarea name="" [(ngModel)]="message" id="" cols="30" rows="10"></textarea>
-          <input type="submit" (click)="sendUser()" name="" id="">
+          <input type="submit" name="" id="">
         </div>
-      </div>
+      </div> -->
     </div>
 
   </section>
