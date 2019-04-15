@@ -10,14 +10,17 @@
       <div class="m-10">
         <p class="bot-color">{{chat}}</p>
 
+        <p class="btn-option pointer" (click)="sendUser()">{{firstOption.label}}</p>
+
+
         <div *ngFor="let i of responseMessageArr; let ind = index;"
           [ngClass]="ind%2 == 0 ? 'text-right' : 'text-left' ">
           <p [ngClass]="ind%2 == 0 ? 'user-color' : 'bot-color' ">{{i}}</p>
         </div>
 
         <div *ngIf="opRes == true">
-            <div class="options-wrapper">
-          <div *ngFor="let op of options">       
+        <div class="options-wrapper">
+          <div *ngFor="let op of options" class="d-inline-block">       
           
                 <p class="btn-option pointer" (click)="setOption(op.label)">{{op.label}}</p>
 
@@ -57,7 +60,7 @@
               <span class="bold-text">contratação de um serviço</span>?
               Consulte nosso LegalChat, é rápido e prático.
             </p>
-            <input type="submit" class="btn btn-start" value="Começar" />
+            <input type="submit" class="btn btn-start" value="Começar" (click)="openChat()" />
           </div>
         </div>
       </div>

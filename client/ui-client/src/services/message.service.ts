@@ -5,7 +5,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MessageService {
-  url:string = 'https://chatfatec.herokuapp.com/';
+  url:string = 'http://localhost:3000/';
 
   constructor(private httpClient: HttpClient) {
 
@@ -33,8 +33,13 @@ export class MessageService {
   
   }
 
-  async updateUser(user){
-    return await this.httpClient.put(this.url+'conversation/updateUser', user, { headers: this.headerL }).toPromise();
+  async updateUser(id, user){
+
+    let sendId = {
+      id: id,
+      user: user
+    }
+    return await this.httpClient.put(this.url+'conversation/updateUser', sendId, { headers: this.headerL }).toPromise();
 
   }
 }

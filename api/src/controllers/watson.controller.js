@@ -42,7 +42,7 @@ exports.getFirst = async (req, res) => {
             console.log(err)
         }
 
-        res.status(200).send({ message: resposta.output.text[0] })
+        res.status(200).send({ message: resposta.output.text[0], options: resposta.output.generic[1]})
         if (resposta.output.text.length > 0) {
             console.log('======================================');
             console.log(resposta.output.text[0]);
@@ -53,18 +53,18 @@ exports.getFirst = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
 
-    UserConversation.find().then(users=>{
-        console.log(users)
-             res.status(200).send(users)
+    UserConversation.find().then(users => {
+        console.log("USER", users)
+        res.status(200).send(users)
     })
 
 
 }
 
 exports.updateUser = async (req, res) => {
-    UserConversation.update(req.body).then(user=>{
-        console.log(user)
-             res.status(200).send({message: 'Atualizado'})
+
+    UserConversation.findByIdAndUpdate(req.body.id, req.body.user).then(user => {
+        res.status(200).send({ message: 'Atualizado' })
     })
 }
 
@@ -79,7 +79,7 @@ exports.sendMessage = async (req, res) => {
 
     await chatbot.message(payload2, (err, resposta) => {
 
-        
+
         console.log("AQUI", resposta)
         console.log('======================================');
 
