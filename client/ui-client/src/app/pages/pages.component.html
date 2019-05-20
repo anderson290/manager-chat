@@ -6,7 +6,7 @@
     <div class="headerBox">
       <i class="fas fa-times float-r pointer" (click)="closeChat()"></i>
     </div>
-    <div class="chat">
+    <div class="chat" #scrollMe [scrollTop]="scrollMe.scrollHeight">
       <div class="m-10">
         <p class="bot-color">{{chat}}</p>
 
@@ -32,10 +32,10 @@
     </div>
     <div class="footerBox">
 
-      <input type="text" (keyup.enter)="sendUser()" [(ngModel)]="message" class="form-control send-text-input" name=""
+      <input type="text" (keyup.enter)="sendUser(); scroll(divToScroll)" [(ngModel)]="message" class="form-control send-text-input" name=""
         placeholder="Digite sua dúvida.." id="">
 
-      <button type="button" (click)="sendUser()" class="form-control btn send-text-button"><i
+      <button type="button" (click)="sendUser(); scroll(divToScroll)" class="form-control btn send-text-button"><i
           class="fas fa-arrow-circle-right"></i></button>
     </div>
   </div>
