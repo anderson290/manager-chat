@@ -1,0 +1,41 @@
+@import './colors';
+
+
+.title-icon{
+    fill: $black;
+    padding: 1em 0em;
+    width: 2em;
+}
+
+.tickets{
+    overflow-y: auto;
+    height: 39.4em;
+}
+
+.ticket-item{
+    background: $white;
+    padding: 1em;
+    border: 1px solid $light-gray;
+    cursor: pointer;
+}
+
+.ticket-header{
+    background: $lighter-gray;
+    display: flex;
+    .ticket-icon{
+        width: 2em;
+        fill: $black;
+        padding: 1em 0em;
+        cursor: pointer;
+        &:hover{
+            fill: $dark-blue;
+        }
+    }       
+}
+
+.ticket-content{
+    height: 35em;
+    padding: 1em;
+    overflow-y: auto;
+    background: $lighter-gray;
+}
