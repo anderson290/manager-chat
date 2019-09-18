@@ -2,10 +2,14 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
+const config = require('./config');
+
 const app = express();
 const cors = require('cors')
 
-mongoose.connect('mongodb+srv://legalChatbotDb:1QazxsW229@legalchatbot-errfy.mongodb.net/test?retryWrites=true')
+mongoose.connect(config.connectionString);
+
 app.use(cors({enableOrigin:"*"}));
 
 app.use(bodyParser.json()); 

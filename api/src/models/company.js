@@ -29,6 +29,9 @@ const schema = new Schema({
     site:{
         type: String
     },
+    password:{
+        type: String
+    },
     level:{
         type: Number
     }
