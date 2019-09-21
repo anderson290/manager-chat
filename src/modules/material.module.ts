@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -12,12 +15,18 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatSelectModule
   ],
   exports: [
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatSelectModule
   ]
 })
 export class MaterialCustomModule { }
