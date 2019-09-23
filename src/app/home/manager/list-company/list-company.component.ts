@@ -7,7 +7,8 @@ import { ManagerService } from 'src/services/manager.service';
   styleUrls: ['./list-company.component.scss']
 })
 export class ListCompanyComponent implements OnInit {
-
+  displayedColumns: string[] = ['cnpj', 'name', 'email', 'site'];
+  dataSource: any;
   companies: any;
   constructor(
     private managerService: ManagerService
@@ -16,7 +17,8 @@ export class ListCompanyComponent implements OnInit {
   ngOnInit() {
     this.managerService.getCompanies().subscribe(res=>{
       this.companies = res;
-    })
+      this.dataSource = this.companies;
+    });
   }
 
 }
