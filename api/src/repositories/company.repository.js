@@ -7,6 +7,9 @@ const md5 = require('md5');
 exports.get = () => {
     return Company.find();
 }
+exports.getById = (id) => {
+    return Company.findById(id);
+}
 
 exports.create = (body) => {
     let company = new Company({

@@ -18,6 +18,17 @@ exports.getCompanies = async (req, res) => {
 
 }
 
+exports.getCompany = async (req, res) => {
+    console.log(req.body)
+
+    await repository.getById(req.body.id).then(company => {
+
+        res.status(200).send(company)
+
+    });
+
+}
+
 exports.createCompany = async (req, res) => {
 
 

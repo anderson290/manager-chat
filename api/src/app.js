@@ -10,7 +10,14 @@ const cors = require('cors')
 
 mongoose.connect(config.connectionString);
 
-app.use(cors({enableOrigin:"*"}));
+app.use(cors({
+    origin: '*',
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+    maxAge: 5,
+    credentials: true,
+    allowMethods: ['GET', 'POST', 'UPDATE', 'PUT', 'PATCH', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept']
+}));
 
 app.use(bodyParser.json()); 
 
