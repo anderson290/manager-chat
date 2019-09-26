@@ -1,51 +1,54 @@
-<div class="accordion-container m-t-1em">
+<div class="modal-header">
+    <h2 class="text-center">Cadastro</h2>
+</div>
 
-    <form [formGroup]="form">
-        <div class="row">
-            <mat-form-field class="col-12">
-                <input matInput placeholder="Nome da Empresa" formControlName="companyName">
-            </mat-form-field>
-
-        </div>
-        <div class="row">
-            <mat-form-field class="col-12 col-md-6">
-                <input matInput placeholder="Nome Fantasia" formControlName="fantasyName">
-            </mat-form-field>
-            <mat-form-field class="col-12 col-md-6">
-                <input matInput placeholder="Razão Social" formControlName="razaoSocial">
-            </mat-form-field>
-        </div>
-        <div class="row">
-            <mat-form-field class="col-12 col-md-6">
-                <input matInput placeholder="CNPJ" formControlName="cnpj">
-            </mat-form-field>
-            <mat-form-field class="col-12 col-md-6">
-                <input matInput placeholder="Telefone" formControlName="phoneNumber">
-            </mat-form-field>
-        </div>
-        <div class="row">
-            <mat-form-field class="col-12 col-md-8">
-                <input matInput placeholder="Email" formControlName="email">
-            </mat-form-field>
-            <mat-form-field class="col-12 col-md-4">
-                <input matInput placeholder="Site" formControlName="site">
-            </mat-form-field>
-        </div>
-        <div class="row">
-            <mat-form-field class="col-12 col-md-6">
-                <input matInput type="password" placeholder="Senha" formControlName="password">
-            </mat-form-field>
-            <mat-form-field class="col-12 col-md-6">
-                <mat-label>Nível de Acesso</mat-label>
-                <mat-select formControlName="level">
-                    <mat-option value="0">Manager</mat-option>
-                    <mat-option value="1">Company</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="center-object">
-            <button class="btn-submit" (click)="create()">Cadastrar</button>
-        </div>
-    </form>
-
+<div class="modal-body">
+    <div class="container m-t-1em">
+        <form [formGroup]="form">
+            <div class="row">
+                <mat-form-field class="col-12">
+                    <input matInput placeholder="Nome da Empresa" formControlName="companyName">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-12 col-md-6">
+                    <input matInput placeholder="Nome Fantasia" formControlName="fantasyName">
+                </mat-form-field>
+                <mat-form-field class="col-12 col-md-6">
+                    <input matInput placeholder="Razão Social" formControlName="razaoSocial">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-12 col-md-6">
+                    <input matInput placeholder="CNPJ" formControlName="cnpj">
+                </mat-form-field>
+                <mat-form-field class="col-12 col-md-6">
+                    <input matInput placeholder="Telefone" formControlName="phoneNumber">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-12 col-md-8">
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field class="col-12 col-md-4">
+                    <input matInput placeholder="Site" formControlName="site">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-12 col-md-6">
+                    <input matInput type="password" placeholder="Senha" formControlName="password">
+                </mat-form-field>
+                <mat-form-field class="col-12 col-md-6">
+                    <mat-label>Nível de Acesso</mat-label>
+                    <mat-select formControlName="level">
+                        <mat-option value="0">Manager</mat-option>
+                        <mat-option value="1">Company</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="center-object">
+                <button class="btn btn-outline-primary" (click)="create()">Cadastrar</button>
+            </div>
+        </form>
+    </div>
 </div>

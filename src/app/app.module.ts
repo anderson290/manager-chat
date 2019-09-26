@@ -15,6 +15,7 @@ import { UserComponent } from './home/user/user.component';
 import { CreateCompanyComponent } from './home/manager/create-company/create-company.component';
 import { ListCompanyComponent } from './home/manager/list-company/list-company.component';
 import { ManagerService } from 'src/services/manager.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,11 @@ import { ManagerService } from 'src/services/manager.service';
     MaterialCustomModule,
     FormsModule,
     ReactiveFormsModule,
-    SvgModule
+    SvgModule,
+    NgbModule
+  ],
+  entryComponents: [
+    CreateCompanyComponent
   ],
   providers: [
     ManagerService

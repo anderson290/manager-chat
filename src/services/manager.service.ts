@@ -14,6 +14,13 @@ export class ManagerService {
     private http: HttpClient
   ) { }
 
+  
+  getCompanyById(params){
+    params.id = params
+    return this.http.get<any>(`${this.url}/company`, params);
+  }
+
+  
   getCompanies(){
     return this.http.get<any>(`${this.url}/company/companies`);
   }

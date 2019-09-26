@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ManagerService } from 'src/services/manager.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-company',
@@ -11,17 +12,26 @@ export class CreateCompanyComponent implements OnInit {
 
 
   form: FormGroup;
+  @Input() companyId;
 
   constructor(
     private formBuilder: FormBuilder,
-    private managerService: ManagerService
+    private managerService: ManagerService,
+    private activeModal: NgbActiveModal
   ) { }
 
   ngOnInit() {
+    console.log(this.companyId);
     this.formInit();
+
+    if (this.companyId) {
+
+      this.getCompanyById();
+
+    } 
   }
 
-  formInit(){
+  formInit() {
     this.form = this.formBuilder.group({
       companyName: ['', Validators.required],
       fantasyName: ['', Validators.required],
@@ -36,11 +46,18 @@ export class CreateCompanyComponent implements OnInit {
     });
   }
 
-  create(){
-    console.log(this.form.value);
-    
-    this.managerService.createCompany(this.form.value).subscribe(res =>{
+
+  getCompanyById() {
+    this.managerService.getCompanyById(this.companyId).subscribe(res => {
+      // this.form.patchValue(res);
       console.log(res);
+    })
+  }
+
+  create() {
+    this.managerService.createCompany(this.form.value).subscribe(res => {
+      console.log(res);
+      this.activeModal.close();
     });
   }
 
