@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ManagerService } from 'src/services/manager.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  tickets:any;
+  conversation: any;
+
+  constructor(
+    private manageService: ManagerService
+  ) { }
 
   ngOnInit() {
+    this.getTickets();
   }
 
+  getTickets(){
+    this.manageService.getTickets().subscribe(res=>{
+      this.tickets = res;
+      this.conversation = this.tickets[0].conversation;
+    })
+  }
+
+  changeConversation(conv){
+    this.conversation = conv;
+  }
 }

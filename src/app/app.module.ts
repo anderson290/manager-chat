@@ -18,6 +18,8 @@ import { ManagerService } from 'src/services/manager.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/services/auth.service';
 import { NavComponent } from './home/nav/nav.component';
+import { TicketsComponent } from './home/user/tickets/tickets.component';
+import { ChartsComponent } from './home/user/charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NavComponent } from './home/nav/nav.component';
     UserComponent,
     CreateCompanyComponent,
     ListCompanyComponent,
-    NavComponent
+    NavComponent,
+    TicketsComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,

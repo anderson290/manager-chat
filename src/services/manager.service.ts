@@ -29,4 +29,8 @@ export class ManagerService {
   createCompany(params){
     return this.http.post<any>(`${this.url}/company/create`, params);
   }
+
+  getTickets(){
+    return this.http.get<any>(`${this.url}/ticket`);
+  }
 }

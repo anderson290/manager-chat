@@ -1,5 +1,4 @@
 <app-nav></app-nav>
-
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-12">
@@ -8,23 +7,21 @@
                     <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/ticket.svg'"></div>
                     <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/pie-chart.svg'"></div>
                 </div>
-                <div class="ticket-item">
-
-                    <h5>Não recebi meu produto</h5>
+                <div class="ticket-item" *ngFor="let ticket of tickets" (click)="changeConversation(ticket.conversation)">
+                    <h5>{{ticket?.title}}</h5>
                     <div class="">
                         <p>André Sanches</p>
+                        <p>{{ticket?.status == 'inProgress' ? 'Em Progresso' : 'Encerrado'}}</p>
                         <p class="text-right">20/09/2019</p>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="col-md-8 col-12">
             <div class="ticket-content">
-                <p class="user-text">alo</p>
-                <p class="adm-text">alo</p>
+                    <p *ngFor="let text of conversation" [ngClass]="text.userType == 'admin' ? 'adm-text' : 'user-text'">{{text?.message}}</p>
             </div>
-            <mat-form-field  appearance="outline" class="w-100">
+            <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Mensagem</mat-label>
                 <input matInput type="text" placeholder="Digite..">
             </mat-form-field>
