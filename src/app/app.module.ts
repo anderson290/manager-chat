@@ -16,6 +16,8 @@ import { CreateCompanyComponent } from './home/manager/create-company/create-com
 import { ListCompanyComponent } from './home/manager/list-company/list-company.component';
 import { ManagerService } from 'src/services/manager.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/services/auth.service';
+import { NavComponent } from './home/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ManagerComponent,
     UserComponent,
     CreateCompanyComponent,
-    ListCompanyComponent
+    ListCompanyComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CreateCompanyComponent
   ],
   providers: [
-    ManagerService
+    ManagerService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

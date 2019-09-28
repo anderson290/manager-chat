@@ -1,1 +1,3 @@
-<app-manager></app-manager>
+
+<app-manager *ngIf="company?.level == 0"></app-manager>
+<app-user *ngIf="company?.level == 1"></app-user>

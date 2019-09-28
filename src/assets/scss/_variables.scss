@@ -19,6 +19,15 @@
     padding: 4em;
 }
 
+.power-icon{
+  width: 2em;
+  margin: 1em;
+  cursor: pointer;
+  &:hover{
+      fill: $red;
+  }
+}
+
 .cursor{
   cursor: pointer;
 }
