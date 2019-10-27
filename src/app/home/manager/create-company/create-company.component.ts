@@ -12,21 +12,28 @@ export class CreateCompanyComponent implements OnInit {
 
 
   form: FormGroup;
+  permissions:any;
   @Input() companyId;
 
   constructor(
     private formBuilder: FormBuilder,
     private managerService: ManagerService,
     private activeModal: NgbActiveModal
-  ) { }
-
-  ngOnInit() {
-    console.log(this.companyId);
+  ) { 
     this.formInit();
 
+  }
+
+  ngOnInit() {
+    this.formInit();
+
+    this.permissions = [
+      {name: 'Manager', value:'0'},
+      {name: 'Company', value:'1'}
+    ];
     if (this.companyId) {
 
-      this.getCompanyById();
+     this.getCompanyById();
 
     } 
   }
@@ -48,17 +55,30 @@ export class CreateCompanyComponent implements OnInit {
 
 
   getCompanyById() {
-    this.managerService.getCompanyById(this.companyId).subscribe(res => {
-      // this.form.patchValue(res);
-      console.log(res);
+
+    let param = {
+      id: this.companyId
+    }
+    this.managerService.getCompanyById(param).subscribe(res => {
+      this.form.patchValue(res);
+      console.log('asdasd',this.form);
     })
   }
 
-  create() {
-    this.managerService.createCompany(this.form.value).subscribe(res => {
-      console.log(res);
-      this.activeModal.close();
-    });
+  close() {
+    if(this.companyId){
+      let param = this.form.value;
+      param.id = this.companyId
+      this.managerService.updateCompany(param).subscribe(res => {
+        console.log(res);
+        this.activeModal.close(res);
+      });
+    }else{
+      this.managerService.createCompany(this.form.value).subscribe(res => {
+        this.activeModal.close();
+      });
+    }
+   
   }
 
 }

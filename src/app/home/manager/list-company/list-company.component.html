@@ -1,11 +1,12 @@
 <div class="float-right">
-    <button (click)="openCompanyModal()">Cadastrar</button>
+    <div class="cursor add-icon" (click)="openCompanyModal()" [inlineSVG]="'assets/icons/add.svg'"></div>
+
 </div>
 
 <div class="container">
     <div class="row mt-4">
         <div class="col-12">
-            <table mat-table [dataSource]="companies" class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
                 <ng-container matColumnDef="cnpj">
                     <th mat-header-cell *matHeaderCellDef> CNPJ </th>
@@ -30,7 +31,8 @@
                 <ng-container matColumnDef="edit">
                     <th mat-header-cell *matHeaderCellDef> </th>
                     <td mat-cell *matCellDef="let element">
-                        <div class="w-1em cursor" (click)="openCompanyModal(element._id)" [inlineSVG]="'assets/icons/edit.svg'"></div>
+                        <div class="w-1em cursor" (click)="openCompanyModal(element._id)"
+                            [inlineSVG]="'assets/icons/edit.svg'"></div>
                     </td>
                 </ng-container>
 
@@ -44,6 +46,8 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
         </div>
     </div>
 </div>

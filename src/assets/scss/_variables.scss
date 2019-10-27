@@ -19,6 +19,14 @@
     padding: 4em;
 }
 
+.add-icon{
+  width: 2em;
+  margin: 1em;
+  &:hover{
+    fill: $green;
+  } 
+}
+
 .power-icon{
   width: 2em;
   margin: 1em;

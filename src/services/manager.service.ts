@@ -15,9 +15,8 @@ export class ManagerService {
   ) { }
 
   
-  getCompanyById(params){
-    params.id = params
-    return this.http.get<any>(`${this.url}/company`, params);
+  getCompanyById(companyId){
+    return this.http.post<any>(`${this.url}/company`, companyId);
   }
 
   
@@ -28,6 +27,11 @@ export class ManagerService {
 
   createCompany(params){
     return this.http.post<any>(`${this.url}/company/create`, params);
+  }
+
+
+  updateCompany(param){
+    return this.http.put<any>(`${this.url}/company/${param.id}`, param);
   }
 
   getTickets(){
