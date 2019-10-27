@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ManagerService } from 'src/services/manager.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-company',
@@ -18,9 +19,9 @@ export class CreateCompanyComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private managerService: ManagerService,
-    private activeModal: NgbActiveModal
+    private activeModal: NgbActiveModal,
+    private toastrService: ToastrService
   ) { 
-    this.formInit();
 
   }
 
@@ -44,7 +45,7 @@ export class CreateCompanyComponent implements OnInit {
       fantasyName: ['', Validators.required],
       razaoSocial: ['', Validators.required],
       cnpj: [null, Validators.required],
-      // address: ['', Validators.required],
+      address: ['', Validators.required],
       phoneNumber: [null, Validators.required],
       email: ['', Validators.required],
       site: ['', Validators.required],
@@ -61,23 +62,38 @@ export class CreateCompanyComponent implements OnInit {
     }
     this.managerService.getCompanyById(param).subscribe(res => {
       this.form.patchValue(res);
-      console.log('asdasd',this.form);
     })
   }
 
   close() {
-    if(this.companyId){
-      let param = this.form.value;
-      param.id = this.companyId
-      this.managerService.updateCompany(param).subscribe(res => {
-        console.log(res);
-        this.activeModal.close(res);
-      });
+    if(this.form.valid){
+      if(this.companyId){
+        let param = this.form.value;
+        param._id = this.companyId
+        this.managerService.updateCompany(param).subscribe(res => {
+          if(res.status == 200){
+            this.toastrService.success(`A Empresa ${param.companyName} foi atualizada com sucesso!`, 'Empresa Atualizada');
+            this.activeModal.close(res);
+          }else{
+            this.toastrService.error(`Ocorreu uma falha no sistema!`, 'Ops!');
+          }
+        });
     }else{
       this.managerService.createCompany(this.form.value).subscribe(res => {
-        this.activeModal.close();
+        console.log(res);
+        if(res.status == 200){
+          this.toastrService.success(`A Empresa ${this.form.get('companyName').value} foi criada com sucesso!`, 'Empresa Criada');
+          this.activeModal.close(res);
+        }else{
+          this.toastrService.error(`Ocorreu uma falha no sistema!`, 'Ops!');
+        }
       });
     }
+    }else{
+      this.toastrService.warning(`Preencha todos os campos do formulário!`);
+
+    }
+
    
   }
 

@@ -19,6 +19,11 @@
                 </mat-form-field>
             </div>
             <div class="row">
+                <mat-form-field class="col-12">
+                    <input matInput placeholder="Endereço" formControlName="address">
+                </mat-form-field>
+            </div>
+            <div class="row">
                 <mat-form-field class="col-12 col-md-6">
                     <input matInput placeholder="CNPJ" formControlName="cnpj">
                 </mat-form-field>
@@ -41,7 +46,7 @@
                 <mat-form-field class="col-12 col-md-6">
                     <mat-label>Nível de Acesso</mat-label>
                     <mat-select formControlName="level">
-                        <mat-option *ngFor="let p of permissions" [value]="p.value">{{p.name}}</mat-option>
+                        <mat-option *ngFor="let p of permissions" value="{{p.value}}">{{p.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>

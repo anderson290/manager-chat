@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateCompanyComponent } from '../create-company/create-company.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material';
+import { DeleteModalComponent } from 'src/app/modal/delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-list-company',
@@ -33,7 +34,7 @@ export class ListCompanyComponent implements OnInit {
   getCompanies(){
     this.managerService.getCompanies().subscribe(res=>{
       this.companies = res;
-      // this.dataSource = this.companies;
+      
       this.dataSource = new MatTableDataSource<any>(this.companies);
 
       this.dataSource.paginator = this.paginator;
@@ -41,11 +42,19 @@ export class ListCompanyComponent implements OnInit {
 
     });
   }
-  openCompanyModal(id?){
+  openCompanyModal(id){
     let modal = this.modalService.open(CreateCompanyComponent, {size:'lg'});
     if(id){
       modal.componentInstance.companyId = id;
     }
+    modal.result.then(res=>{
+      this.getCompanies();
+    });
+  }
+
+  openDeleteModal(comp){
+    let modal = this.modalService.open(DeleteModalComponent, {size:'lg'});
+    modal.componentInstance.company = comp;
     modal.result.then(res=>{
       this.getCompanies();
     });

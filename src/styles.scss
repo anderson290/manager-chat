@@ -3,3 +3,12 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 @import "assets/scss/main";
+// regular style toast 
+@import '~ngx-toastr/toastr';
+ 
+// bootstrap style toast 
+// or import a bootstrap 4 alert styled design (SASS ONLY) 
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions 
+// @import '~ngx-toastr/toastr-bs4-alert';
+ 
+// @import '~ngx-toastr/toastr-bs4-alert';

@@ -31,7 +31,7 @@
                 <ng-container matColumnDef="edit">
                     <th mat-header-cell *matHeaderCellDef> </th>
                     <td mat-cell *matCellDef="let element">
-                        <div class="w-1em cursor" (click)="openCompanyModal(element._id)"
+                        <div class="w-1em cursor blue-fill" (click)="openCompanyModal(element._id, 'update')"
                             [inlineSVG]="'assets/icons/edit.svg'"></div>
                     </td>
                 </ng-container>
@@ -39,7 +39,8 @@
                 <ng-container matColumnDef="delete">
                     <th mat-header-cell *matHeaderCellDef> </th>
                     <td mat-cell *matCellDef="let element">
-                        <div class="cursor" [inlineSVG]="'assets/icons/garbage.svg'"></div>
+                        <div class="cursor red-fill" (click)="openDeleteModal(element)"
+                         [inlineSVG]="'assets/icons/garbage.svg'"></div>
                     </td>
                 </ng-container>
 

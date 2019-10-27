@@ -31,7 +31,11 @@ export class ManagerService {
 
 
   updateCompany(param){
-    return this.http.put<any>(`${this.url}/company/${param.id}`, param);
+    return this.http.put<any>(`${this.url}/company/${param._id}`, param);
+  }
+
+  removeCompany(param){
+    return this.http.post<any>(`${this.url}/company/${param._id}`, param);
   }
 
   getTickets(){

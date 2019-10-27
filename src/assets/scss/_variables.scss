@@ -5,6 +5,14 @@
   margin: 1em 0em 0em 0em;
 }
 
+.m-1em{
+  margin: 1em;
+}
+
+.w-5em{
+  width: 5em;
+}
+
 .center-object{
     margin: 0 auto;
     text-align: center;
@@ -67,4 +75,16 @@
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
+  }
+
+  .red-fill:hover{
+    fill: $red;
+  }
+
+  .blue-fill:hover{
+    fill: $clean-blue;
+  }
+
+  .red-text{
+    color: $red;
   }

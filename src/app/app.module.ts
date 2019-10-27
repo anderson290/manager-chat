@@ -20,6 +20,8 @@ import { AuthService } from 'src/services/auth.service';
 import { NavComponent } from './home/nav/nav.component';
 import { TicketsComponent } from './home/user/tickets/tickets.component';
 import { ChartsComponent } from './home/user/charts/charts.component';
+import { DeleteModalComponent } from './modal/delete-modal/delete-modal.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ChartsComponent } from './home/user/charts/charts.component';
     ListCompanyComponent,
     NavComponent,
     TicketsComponent,
-    ChartsComponent
+    ChartsComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +45,13 @@ import { ChartsComponent } from './home/user/charts/charts.component';
     FormsModule,
     ReactiveFormsModule,
     SvgModule,
-    NgbModule
+    NgbModule,
+    ToastrModule.forRoot()
+
   ],
   entryComponents: [
-    CreateCompanyComponent
+    CreateCompanyComponent,
+    DeleteModalComponent
   ],
   providers: [
     ManagerService,
