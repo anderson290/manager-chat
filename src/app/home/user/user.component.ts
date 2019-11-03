@@ -8,6 +8,7 @@ import { ManagerService } from 'src/services/manager.service';
 })
 export class UserComponent implements OnInit {
 
+  @Input() company;
   tickets:any;
   conversation: any;
 
@@ -20,10 +21,13 @@ export class UserComponent implements OnInit {
   }
 
   getTickets(){
-    this.manageService.getTickets().subscribe(res=>{
+    let params = {
+      companyId: this.company._id
+    }
+    this.manageService.getTicketsByCompany(params).subscribe(res=>{
       this.tickets = res;
-      this.conversation = this.tickets[0].conversation;
-    })
+      console.log(this.tickets);
+    });
   }
 
   changeConversation(conv){

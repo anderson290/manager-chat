@@ -18,8 +18,13 @@
             </div>
         </div>
         <div class="col-md-8 col-12">
-            <div class="ticket-content">
-                    <p *ngFor="let text of conversation" [ngClass]="text.userType == 'admin' ? 'adm-text' : 'user-text'">{{text?.message}}</p>
+            <div class="ticket-content p-1em">
+                <div class="row" *ngFor="let text of conversation">
+                    <p class="d-grid" [ngClass]="text.userType == 'admin' ? 'adm-text' : 'user-text'">
+                        <b>{{text.userType == 'admin' ? 'Você' : 'Usuário'}}</b>
+                        {{text?.message}}
+                    </p>
+                </div>
             </div>
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Mensagem</mat-label>

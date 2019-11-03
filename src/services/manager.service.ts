@@ -41,4 +41,8 @@ export class ManagerService {
   getTickets(){
     return this.http.get<any>(`${this.url}/ticket`);
   }
+
+  getTicketsByCompany(companyId){
+    return this.http.post<any>(`${this.url}/ticket/getByCompany`, companyId);
+  }
 }
