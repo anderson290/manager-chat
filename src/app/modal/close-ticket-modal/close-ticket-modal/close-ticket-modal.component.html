@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4>Deseja encerrar o ticket?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close('clean')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body center-object">
+    <div class="container">
+
+        <form [formGroup]="form">
+            <div class="row">
+                <mat-radio-group class="col-12" formControlName="close">
+                    <mat-radio-button [color]="red" [value]="true">Sim</mat-radio-button>
+                    <mat-radio-button [color]="red" [value]="false">Não</mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field class="col-12">
+                    <mat-label>Assunto:</mat-label>
+                    <mat-select formControlName="option">
+                        <mat-option value="Eletrônico">Eletrônico</mat-option>
+                        <mat-option value="Eletrodoméstico">Eletrodoméstico</mat-option>
+                        <mat-option value="Saúde">Saúde</mat-option>
+                        <mat-option value="Vestuário">Vestuário</mat-option>
+                        <mat-option value="Cama e mesa">Cama e mesa</mat-option>
+                        <mat-option value="Atraso na entrega">Atraso na entrega</mat-option>
+                        <mat-option value="Pagamento">Pagamento</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+        </form>
+        <button class="btn btn-outline-primary" (click)="close()">Encerrar</button>
+    </div>
+</div>

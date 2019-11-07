@@ -22,6 +22,8 @@ import { TicketsComponent } from './home/user/tickets/tickets.component';
 import { ChartsComponent } from './home/user/charts/charts.component';
 import { DeleteModalComponent } from './modal/delete-modal/delete-modal.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CloseTicketModalComponent } from './modal/close-ticket-modal/close-ticket-modal/close-ticket-modal.component';
+import { TicketService } from 'src/services/ticket.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { ToastrModule } from 'ngx-toastr';
     NavComponent,
     TicketsComponent,
     ChartsComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    CloseTicketModalComponent
   ],
   imports: [
     BrowserModule,
@@ -51,10 +54,12 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   entryComponents: [
     CreateCompanyComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    CloseTicketModalComponent
   ],
   providers: [
     ManagerService,
+    TicketService,
     AuthService
   ],
   bootstrap: [AppComponent]

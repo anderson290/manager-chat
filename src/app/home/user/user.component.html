@@ -7,13 +7,13 @@
                     <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/ticket.svg'"></div>
                     <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/pie-chart.svg'"></div>
                 </div>
-                <div class="ticket-item" *ngFor="let ticket of tickets" (click)="changeConversation(ticket.conversation)">
-                    <h5>{{ticket?.title}}</h5>
-                    <div class="">
-                        <p>André Sanches</p>
-                        <p>{{ticket?.status == 'inProgress' ? 'Em Progresso' : 'Encerrado'}}</p>
-                        <p class="text-right">20/09/2019</p>
+                <div class="ticket-item" *ngFor="let ticket of tickets; let i = index;"
+                    (click)="changeConversation(ticket)">
+                    <div class="cursor float-right w-1em red-fill" (click)="closeTicket(ticket)" [inlineSVG]="'assets/icons/garbage.svg'">
                     </div>
+                    <h6>{{ticket?.title}}</h6>
+                    <span>{{ticket?.status == 'inProgress' ? 'Em Progresso' : 'Encerrado'}}</span>
+                    <p class="text-right b-bottom">20/09/2019</p>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
             </div>
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Mensagem</mat-label>
-                <input matInput type="text" placeholder="Digite..">
+                <input matInput type="text" [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Digite..">
             </mat-form-field>
         </div>
     </div>

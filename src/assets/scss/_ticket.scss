@@ -9,13 +9,14 @@
 
 .tickets{
     overflow-y: auto;
-    height: 39.4em;
+    height: 34em;
+    border: 1px solid #e6e6e6;
+
 }
 
 .ticket-item{
     background: $white;
-    padding: 1em;
-    border: 1px solid $light-gray;
+    padding: .1em .8em;
     cursor: pointer;
 }
 
@@ -34,7 +35,7 @@
 }
 
 .ticket-content{
-    height: 35em;
+    height: 30em;
     padding: 1em;
     overflow-y: auto;
     background: $lighter-gray;
