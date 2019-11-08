@@ -1,28 +1,29 @@
 <div class="app-login">
   <mat-card>
     <div class="gradient-border"></div>
-    <mat-card-content>
     <div class="image-card">
-      <img mat-card-image src="assets/icons/company-men.svg">
-    </div>
-    <mat-card-title> Acesse o sistema </mat-card-title>
+        <img mat-card-image src="assets/icons/company-men.svg">
+      </div>
+      <mat-card-title> Acesse o sistema </mat-card-title>
+    <mat-card-content>
       <form [formGroup]="form">
-        <div class="form-row mb-3">
+        <div class="form-row">
             <mat-form-field class="w-100" appearance="standard">
               <mat-label>E-mail</mat-label>
-              <input matInput type="text" placeholder="Digite seu E-mail" formControlName="email">
+              <input matInput type="email" placeholder="Digite seu E-mail" formControlName="email">
               <mat-icon matSuffix> person </mat-icon>
             </mat-form-field>
             <mat-form-field class="w-100" appearance="standard">
               <mat-label>Senha</mat-label>
-              <input matInput type="password" placeholder="Digite sua senha" formControlName="password">
-              <button type="button" mat-button matSuffix>
+              <input matInput type="password" id="password" placeholder="Digite sua senha" formControlName="password">
+              <button type="button" mat-button matSuffix [disabled]="!form.controls['password'].value" (click)="showPassword('password')">
                 <mat-icon matSuffix> remove_red_eye </mat-icon>
               </button>
+              <!-- <mat-hint>Senha mínima de 6 caracteres<span class="text-danger">*</span> </mat-hint> -->
             </mat-form-field>
         </div>
         <div class="form-row">
-          <button class="btn-default w-100" (click)="login()" mat-button>
+          <button class="btn-default w-100" (click)="login()" [disabled]="form.invalid" mat-button>
             Entrar <mat-icon>send</mat-icon>
           </button>
         </div>

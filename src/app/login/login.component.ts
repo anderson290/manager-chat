@@ -17,13 +17,29 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.email
+      ])],
+      password: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(6)
+      ])],
     });
   }
 
-  login(){
-      this.authService.checkLogin(this.form.value);
+  showPassword(elementId) {
+    const type = document.getElementById(elementId).getAttribute('type');
+
+    if (type == "password") {
+      document.getElementById(elementId).setAttribute('type', 'text');
+    } else {
+      document.getElementById(elementId).setAttribute('type', 'password');
+    }
+  }
+
+  login() {
+    this.authService.checkLogin(this.form.value);
   }
 
 }

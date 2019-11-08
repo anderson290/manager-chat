@@ -4,6 +4,7 @@
   height: 100vh;
   justify-content: center;
   margin: 0 15px;
+
   .mat-card {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -12,51 +13,61 @@
     padding: 0;
 
     .gradient-border {
-      background-image: linear-gradient(to right,#123b68, #588cc6);
+      background-image: linear-gradient(to right, #123b68, #588cc6);
       height: 12px;
+      margin-bottom: 35px;
       width: 100%;
     }
-    .mat-card-content {
-    .mat-card-title {
-      color: #123b68;
-      font-family: 'Crete Round';
-      text-align: center;
-    }
+
     .image-card {
       display: flex;
       justify-content: center;
-      padding: 16px 0 10px;
+      padding: 15px 0;
+
       img {
         width: 8em;
       }
     }
 
-      padding: 35px;
+    .mat-card-title {
+      color: #123b68;
+      font-family: 'Crete Round';
+      text-align: center;
+    }
+
+    .mat-card-content {
+      padding: 5px 35px 35px 35px;
+
       form {
         .mat-form-field {
           input {
             padding: 3px 0;
           }
+
           .mat-icon {
             padding: 0 16px;
             width: auto !important;
+            transition: all .4s;
           }
+
           .mat-button {
             padding: 0;
             min-width: auto !important;
           }
         }
+
         .form-row {
           &:last-child {
+            margin-top: 25px;
             button {
-              .mat-icon{
+              .mat-icon {
                 font-size: 18px;
                 height: 20px;
                 margin: auto;
               }
             }
           }
-         }
+        }
       }
     }
   }
