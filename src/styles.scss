@@ -31,9 +31,9 @@ body {
   color: #ffffff;
   font-size: 15px;
   font-weight: 700;
-  opacity: .8;
+  opacity: .9;
   text-transform: uppercase;
-  transition: opacity .4s;
+  transition: all .4s;
 
   &:hover {
     opacity: 1;
@@ -41,5 +41,10 @@ body {
 
   &:focus {
     color: #ffffff;
+  }
+
+  &[disabled="true"] {
+    background-color: #e0e0e0;
+    color: #707070;
   }
 }
