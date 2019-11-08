@@ -1,13 +1,63 @@
-.login-container{
-    margin: 5% 35%;
-    padding: 5em 2em;
-    
-}
+.app-login {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0 15px;
+  .mat-card {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0px 10px 30px 0px rgba(147, 147, 147, 0.16);
+    max-width: 415px;
+    padding: 0;
 
-.bg-login{
-    background: #c6c6c6;
-}
+    .gradient-border {
+      background-image: linear-gradient(to right,#123b68, #588cc6);
+      height: 12px;
+      width: 100%;
+    }
+    .mat-card-content {
+    .mat-card-title {
+      color: #123b68;
+      font-family: 'Crete Round';
+      text-align: center;
+    }
+    .image-card {
+      display: flex;
+      justify-content: center;
+      padding: 16px 0 10px;
+      img {
+        width: 8em;
+      }
+    }
 
-.login-icon{
-    width: 8em;
+      padding: 35px;
+      form {
+        .mat-form-field {
+          input {
+            padding: 3px 0;
+          }
+          .mat-icon {
+            padding: 0 16px;
+            width: auto !important;
+          }
+          .mat-button {
+            padding: 0;
+            min-width: auto !important;
+          }
+        }
+        .form-row {
+          &:last-child {
+            button {
+              .mat-icon{
+                font-size: 18px;
+                height: 20px;
+                margin: auto;
+              }
+            }
+          }
+         }
+      }
+    }
+  }
 }

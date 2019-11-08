@@ -9,6 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatPaginatorModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { MatPaginatorModule } from '@angular/material';
     MatSelectModule,
     MatTableModule,
     MatRadioModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule,
+    MatButtonModule
   ],
   exports: [
     MatInputModule,
@@ -34,7 +38,9 @@ import { MatPaginatorModule } from '@angular/material';
     MatSelectModule,
     MatTableModule,
     MatRadioModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class MaterialCustomModule { }
