@@ -33,6 +33,7 @@ export class UserComponent implements OnInit {
     }
     this.ticketService.getTicketsByCompany(params).subscribe(res=>{
       this.tickets = res;
+      this.tickets = this.tickets.filter(res=> res.status == "inProgress");
     });
   }
 
