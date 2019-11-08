@@ -1,14 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url('https://fonts.googleapis.com/css?family=Crete+Round|Roboto&display=swap');
 
 @import "assets/scss/main";
-// regular style toast 
+// regular style toast
 @import '~ngx-toastr/toastr';
- 
-// bootstrap style toast 
-// or import a bootstrap 4 alert styled design (SASS ONLY) 
-// should be after your bootstrap imports, it uses bs4 variables, mixins, functions 
+
+// bootstrap style toast
+// or import a bootstrap 4 alert styled design (SASS ONLY)
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
 // @import '~ngx-toastr/toastr-bs4-alert';
- 
+
 // @import '~ngx-toastr/toastr-bs4-alert';
+
+* {
+  outline: none !important;
+  text-decoration: none !important;
+}
+
+body {
+  background-color: #f8f8f8 !important;
+  font-family: 'Roboto' !important;
+}
+
+.btn-default {
+  background-color: #123b68;
+  border: 2px solid #123b68;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  opacity: .8;
+  text-transform: uppercase;
+  transition: opacity .4s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    color: #ffffff;
+  }
+}
