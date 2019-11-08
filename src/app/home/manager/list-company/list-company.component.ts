@@ -42,7 +42,7 @@ export class ListCompanyComponent implements OnInit {
 
     });
   }
-  openCompanyModal(id){
+  openCompanyModal(id?, key?){
     let modal = this.modalService.open(CreateCompanyComponent, {size:'lg'});
     if(id){
       modal.componentInstance.companyId = id;
