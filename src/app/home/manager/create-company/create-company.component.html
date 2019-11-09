@@ -3,53 +3,71 @@
     {{companyId ? 'Atualizar' : 'Cadastrar'}}
   </h4>
 </div>
-
 <div class="modal-body">
   <div class="container m-t-1em">
     <form [formGroup]="form">
-      <div class="row">
-        <mat-form-field class="col-12">
-          <input matInput placeholder="Nome da Empresa" formControlName="companyName">
+      <h6 style="color:#588cc6;font-family: 'Crete Round'"> Dados da empresa </h6>
+      <hr>
+      <div class="form-row">
+        <mat-form-field class="col-12 col-md-8" appearance="standard">
+          <mat-label>Nome da Empresa</mat-label>
+          <input type="text" matInput placeholder="Digite o Nome da Empresa" formControlName="companyName">
+        </mat-form-field>
+        <mat-form-field class="col-12 col-md-4" appearance="standard">
+          <mat-label>CNPJ</mat-label>
+          <input type="text" matInput placeholder="Digite o CNPJ" formControlName="cnpj">
         </mat-form-field>
       </div>
-      <div class="row">
-        <mat-form-field class="col-12 col-md-6">
-          <input matInput placeholder="Nome Fantasia" formControlName="fantasyName">
+      <div class="form-row">
+        <mat-form-field class="col-12 col-md-6" appearance="standard">
+          <mat-label>Nome Fantasia</mat-label>
+          <input type="text" matInput placeholder="Digite o Nome Fantasia" formControlName="fantasyName">
         </mat-form-field>
-        <mat-form-field class="col-12 col-md-6">
-          <input matInput placeholder="Razão Social" formControlName="razaoSocial">
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="col-12">
-          <input matInput placeholder="Endereço" formControlName="address">
+        <mat-form-field class="col-12 col-md-6" appearance="standard">
+          <mat-label>Razão Social</mat-label>
+          <input type="text" matInput placeholder="Digite a Razão Social" formControlName="razaoSocial">
         </mat-form-field>
       </div>
-      <div class="row">
-        <mat-form-field class="col-12 col-md-6">
-          <input matInput placeholder="CNPJ" formControlName="cnpj">
+      <div class="form-row">
+        <mat-form-field class="col-12 col-md-4" appearance="standard">
+          <mat-label>Telefone</mat-label>
+          <input type="text" matInput placeholder="Digite o Telefone" formControlName="phoneNumber">
         </mat-form-field>
-        <mat-form-field class="col-12 col-md-6">
-          <input matInput placeholder="Telefone" formControlName="phoneNumber">
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="col-12 col-md-8">
-          <input matInput placeholder="Email" formControlName="email">
-        </mat-form-field>
-        <mat-form-field class="col-12 col-md-4">
-          <input matInput placeholder="Site" formControlName="site">
+        <mat-form-field class="col-12 col-md-8" appearance="standard">
+          <mat-label>Site da Empresa</mat-label>
+          <input type="text" matInput placeholder="Digite a URL Site" formControlName="site">
         </mat-form-field>
       </div>
-      <div class="row">
-        <mat-form-field class="col-12 col-md-6">
-          <input matInput type="password" placeholder="Senha" formControlName="password">
+      <h6 class="mt-4" style="color:#588cc6;font-family: 'Crete Round'"> Informações para a conta </h6>
+      <hr>
+      <div class="form-row">
+        <mat-form-field class="col-12 col-md-6" appearance="standard">
+          <mat-label>E-mail</mat-label>
+          <input type="email" matInput placeholder="Digite seu e-mail" formControlName="email">
         </mat-form-field>
+        <mat-form-field class="col-12 col-md-6" [hidden]="companyId" appearance="standard">
+          <mat-label>Senha</mat-label>
+          <input matInput placeholder="Digite a senha" formControlName="password" [type]="!hide ? 'password' : 'text'">
+          <button type="button" mat-icon-button matSuffix [disabled]="!form.controls['password'].value" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
         <mat-form-field class="col-12 col-md-6">
           <mat-label>Nível de Acesso</mat-label>
           <mat-select formControlName="level">
             <mat-option *ngFor="let p of permissions" value="{{p.value}}">{{p.name}}</mat-option>
           </mat-select>
+        </mat-form-field>
+      </div>
+      <h6 class="mt-4" style="color:#588cc6;font-family: 'Crete Round'"> Localização da Empresa </h6>
+      <hr>
+      <div class="form-row">
+        <mat-form-field class="col-12" appearance="standard">
+          <mat-label>Endereço</mat-label>
+          <input type="text" matInput placeholder="Digite o endereço da propriedade" formControlName="address">
         </mat-form-field>
       </div>
       <div class="center-object">
