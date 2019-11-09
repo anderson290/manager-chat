@@ -1,13 +1,17 @@
-<div class="container">
-    <div class="row">
-        <div class="col-4">
-            <div class="d-flex">
-                <div class="title-icon" [inlineSVG]="'assets/icons/robot.svg'"></div>
-                <h5 class="h5 m-auto-1em">Olá, {{company?.fantasyName}}!</h5>
-            </div>
+<div class="app-navbar">
+  <mat-toolbar>
+    <div class="container">
+      <mat-toolbar-row>
+        <div class="username-logged">
+          <div class="title-icon mr-2" [inlineSVG]="'assets/icons/robot.svg'"></div>
+          Olá, {{company?.fantasyName}}!
         </div>
-        <div class="col-8">
-            <div class="float-right power-icon" [inlineSVG]="'assets/icons/power.svg'" (click)="exit()"></div>
+        <div class="left-items-menu">
+          <button mat-button mat-icon-button color="warn" matTooltip="Realizar Logout" (click)="exit()">
+            <mat-icon>power_settings_new</mat-icon>
+          </button>
         </div>
+      </mat-toolbar-row>
     </div>
+  </mat-toolbar>
 </div>
