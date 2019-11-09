@@ -1,0 +1,30 @@
+.app-manager {
+  .mat-toolbar {
+    background-color: #123b68;
+    color: white;
+    border-bottom: 3px solid #588cc6;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
+    margin-bottom: 30px;
+    .mat-toolbar-row {
+      justify-content: space-between!important;
+      .left-items-menu {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        .welcome-user {
+          font-size: 14px;
+          margin-right: 10px;
+        }
+        .mat-icon-button {
+          .mat-icon {
+            font-size: 22px;
+            height: auto;
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+

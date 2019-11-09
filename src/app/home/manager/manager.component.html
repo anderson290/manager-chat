@@ -1,12 +1,25 @@
-<div class="container">
-    <h2 class="mt-4">Bem Vindo Anderson</h2>
-    <p>Gerencie Empresas</p>
-</div>
-<mat-tab-group  mat-align-tabs="center">
-    <mat-tab label="Dashboards">
+<div class="app-manager">
+  <mat-toolbar>
+    <div class="container">
+      <mat-toolbar-row>
+        <div class="logo">ManagerChat</div>
+        <div class="left-items-menu">
+          <span class="welcome-user">Bem vindo, {{company?.companyName}}</span>
+          <button mat-button mat-icon-button color="warn" matTooltip="Realizar Logout" (click)="exit()">
+            <mat-icon>power_settings_new</mat-icon>
+          </button>
+        </div>
+      </mat-toolbar-row>
+    </div>
+  </mat-toolbar>
+  <div class="container">
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Dashboards">
         Gráficos
-    </mat-tab>
-    <mat-tab label="Empresas">
+      </mat-tab>
+      <mat-tab label="Empresas">
         <app-list-company></app-list-company>
-    </mat-tab>
-</mat-tab-group>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

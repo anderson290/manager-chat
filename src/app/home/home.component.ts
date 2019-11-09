@@ -15,17 +15,17 @@ export class HomeComponent implements OnInit {
   constructor(
     private authService: AuthService
   ) {
-    
-   }
 
-  ngOnInit() {
-       this.getCompany();
   }
 
-  getCompany(){
+  ngOnInit() {
+    this.getCompany();
+  }
+
+  getCompany() {
     this.tokenObj = JSON.parse(localStorage.getItem('company'));
-    this.authService.decodeToken(this.tokenObj.token).subscribe(res=>{
-      this.company = res.company;      
+    this.authService.decodeToken(this.tokenObj.token).subscribe(res => {
+      this.company = res.company;
     });
   }
 
