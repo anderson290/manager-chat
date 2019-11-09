@@ -21,7 +21,7 @@ export class CreateCompanyComponent implements OnInit {
     private managerService: ManagerService,
     private activeModal: NgbActiveModal,
     private toastrService: ToastrService
-  ) { 
+  ) {
 
   }
 
@@ -33,10 +33,8 @@ export class CreateCompanyComponent implements OnInit {
       {name: 'Company', value:'1'}
     ];
     if (this.companyId) {
-
      this.getCompanyById();
-
-    } 
+    }
   }
 
   formInit() {
@@ -94,7 +92,7 @@ export class CreateCompanyComponent implements OnInit {
 
     }
 
-   
+
   }
 
 }
