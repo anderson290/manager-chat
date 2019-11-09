@@ -28,16 +28,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  showPassword(elementId) {
-    const type = document.getElementById(elementId).getAttribute('type');
-
-    if (type == "password") {
-      document.getElementById(elementId).setAttribute('type', 'text');
-    } else {
-      document.getElementById(elementId).setAttribute('type', 'password');
-    }
-  }
-
   login() {
     this.authService.checkLogin(this.form.value);
   }
