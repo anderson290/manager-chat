@@ -11,6 +11,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatPaginatorModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatRadioModule,
     MatPaginatorModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatTooltipModule
   ],
   exports: [
     MatInputModule,
@@ -40,7 +44,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatRadioModule,
     MatPaginatorModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatTooltipModule
   ]
 })
 export class MaterialCustomModule { }
