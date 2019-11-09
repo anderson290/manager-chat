@@ -5,16 +5,20 @@
     border-bottom: 3px solid #588cc6;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
     margin-bottom: 30px;
+
     .mat-toolbar-row {
-      justify-content: space-between!important;
+      justify-content: space-between !important;
+
       .left-items-menu {
         align-items: center;
         display: flex;
         justify-content: center;
+
         .welcome-user {
           font-size: 14px;
           margin-right: 10px;
         }
+
         .mat-icon-button {
           .mat-icon {
             font-size: 22px;
@@ -27,4 +31,27 @@
   }
 }
 
+@media (max-width: 500px) {
+  .app-manager {
+    .mat-toolbar {
+      min-height: 80px !important;
 
+      .mat-toolbar-row {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+
+        .left-items-menu {
+          .welcome-user {
+            margin-right: 0;
+          }
+          .mat-icon-button {
+            .mat-icon {
+              font-size: 22px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
