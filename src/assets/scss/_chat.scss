@@ -1,28 +1,33 @@
 @import './colors';
 
-.user-text{
-    background: #484848;
-    padding: 1em;
-    width: 20em;
-    color: white;
-    margin: 1em;
-    border-radius: 1em 1em 1em 0em;
+.user-text {
+  background: #b9cee6;
+  padding: 1em;
+  width: 20em;
+  color: #123b68;
+  margin: 1em;
+  border-radius: 1em 1em 1em 0em;
+  word-break: break-word;
+  box-shadow: 0px 5px 0px 0px rgba(0, 64, 134, 0.3);
 }
 
-.adm-text{
-    float: right;
-    background: black;
-    color: white;
-    width: 15em;
-    margin: .4em 1em 0 auto;
-    text-align: right;
-    padding: 1em;
-    border-radius: 1em 1em 0em 1em;
-}
-.p-1em{
-    padding: 1em;
+.adm-text {
+  float: right;
+  background: #123b68;
+  color: white;
+  width: 20em;
+  margin: .4em 1em 1em auto;
+  text-align: right;
+  padding: 1em;
+  border-radius: 1em 1em 0em 1em;
+  word-break: break-word;
+  box-shadow: 0px 5px 0px 0px rgba(0, 42, 87, 0.7);
 }
 
-.d-grid{
-    display: grid;
+.p-1em {
+  padding: 1em;
+}
+
+.d-grid {
+  display: grid;
 }

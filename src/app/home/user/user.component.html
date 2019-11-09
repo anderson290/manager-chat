@@ -1,35 +1,39 @@
 <app-nav></app-nav>
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 col-12">
-            <div class="tickets">
-                <div class="ticket-header">
-                    <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/ticket.svg'"></div>
-                    <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/pie-chart.svg'"></div>
-                </div>
-                <div class="ticket-item" *ngFor="let ticket of tickets; let i = index;"
-                    (click)="changeConversation(ticket)">
-                    <div class="cursor float-right w-1em red-fill" (click)="closeTicket(ticket)" [inlineSVG]="'assets/icons/garbage.svg'">
-                    </div>
-                    <h6>{{ticket?.title}}</h6>
-                    <span>{{ticket?.status == 'inProgress' ? 'Em Progresso' : 'Encerrado'}}</span>
-                    <p class="text-right b-bottom">20/09/2019</p>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-md-4 col-12">
+      <div class="tickets">
+        <div class="ticket-header">
+          <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/ticket.svg'"></div>
+          <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/pie-chart.svg'"></div>
         </div>
-        <div class="col-md-8 col-12">
-            <div class="ticket-content p-1em">
-                <div class="row" *ngFor="let text of conversation">
-                    <p class="d-grid" [ngClass]="text.userType == 'admin' ? 'adm-text' : 'user-text'">
-                        <b>{{text.userType == 'admin' ? 'Você' : 'Usuário'}}</b>
-                        {{text?.message}}
-                    </p>
-                </div>
-            </div>
-            <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Mensagem</mat-label>
-                <input matInput type="text" [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Digite..">
-            </mat-form-field>
+        <div class="ticket-item" *ngFor="let ticket of tickets; let i = index;" (click)="changeConversation(ticket)">
+          <button class="cursor float-right" mat-button mat-icon-button color="warn" (click)="closeTicket(ticket)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <h6>{{ticket?.title}}</h6>
+          <span [class]="ticket?.status == 'inProgress' ? 'text-success' : 'text-danger'">
+            {{ticket?.status == 'inProgress' ? 'Em Progresso' : 'Encerrado'}}
+          </span>
+          <p class="text-muted text-right b-bottom pb-2">20/09/2019</p>
         </div>
+      </div>
     </div>
+    <div class="col-md-8 col-12">
+      <div class="chat" [hidden]="!ticket">
+        <div class="ticket-content p-1em">
+          <div class="row" *ngFor="let text of conversation">
+            <p class="d-grid" [ngClass]="text.userType == 'admin' ? 'adm-text' : 'user-text'">
+              <b>{{text.userType == 'admin' ? 'Você' : 'Usuário'}}</b>
+              {{text?.message}}
+            </p>
+          </div>
+        </div>
+        <mat-form-field appearance="standard" class="w-100 px-4">
+          <input matInput type="text" [(ngModel)]="message" (keyup.enter)="sendMessage()"
+            placeholder="Digite uma mensagem...">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
 </div>

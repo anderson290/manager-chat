@@ -1,42 +1,62 @@
 @import './colors';
 
+.title-icon {
+  fill: $black;
+  padding: 1em 0em;
+  width: 2em;
+}
 
-.title-icon{
-    fill: $black;
-    padding: 1em 0em;
+.tickets {
+  overflow-y: auto;
+  max-height: 34rem;
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px 0px rgba(147, 147, 147, 0.16);
+  margin-bottom: 20px;
+}
+
+.ticket-item {
+  background: $white;
+  padding: 1em 1.5em .4em;
+  cursor: pointer;
+  h6 {
+    font-family: 'Crete Round';
+    font-weight: bold;
+  }
+}
+
+.chat {
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px 0px rgba(147, 147, 147, 0.16);
+  overflow: hidden;
+  margin-bottom: 30px;
+
+  .mat-form-field-infix {
+    border-top: 0;
+  }
+}
+
+
+.ticket-header {
+  background: $dark-blue;
+  display: flex;
+
+  .ticket-icon {
     width: 2em;
-}
-
-.tickets{
-    overflow-y: auto;
-    height: 34em;
-    border: 1px solid #e6e6e6;
-
-}
-
-.ticket-item{
-    background: $white;
-    padding: .1em .8em;
+    fill: $clean-blue;
+    padding: 1em 0em;
     cursor: pointer;
+    transition: all .4s;
+
+    &:hover {
+      fill: $white;
+    }
+  }
 }
 
-.ticket-header{
-    background: $lighter-gray;
-    display: flex;
-    .ticket-icon{
-        width: 2em;
-        fill: $black;
-        padding: 1em 0em;
-        cursor: pointer;
-        &:hover{
-            fill: $dark-blue;
-        }
-    }       
-}
-
-.ticket-content{
-    height: 30em;
-    padding: 1em;
-    overflow-y: auto;
-    background: $lighter-gray;
+.ticket-content {
+  height: 30em;
+  padding: 1em;
+  overflow-y: auto;
+  background: #d7e3f0;
+  // box-shadow: 0px 10px 30px 0px rgba(147, 147, 147, 0.16);
 }
