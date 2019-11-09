@@ -13,20 +13,20 @@ import { DeleteModalComponent } from 'src/app/modal/delete-modal/delete-modal.co
 })
 
 export class ListCompanyComponent implements OnInit {
-  displayedColumns: string[] = ['cnpj', 'name', 'email', 'site', 'edit', 'delete'];
+  displayedColumns: string[] = ['cnpj', 'name', 'email', 'site', 'action'];
   dataSource: any;
   companies: any;
-  
+
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(
     private managerService: ManagerService,
-    private modalService: NgbModal 
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
     this.paginator._intl.itemsPerPageLabel = 'Itens por Página';
-    
+
     this.getCompanies();
 
   }
@@ -34,7 +34,7 @@ export class ListCompanyComponent implements OnInit {
   getCompanies(){
     this.managerService.getCompanies().subscribe(res=>{
       this.companies = res;
-      
+
       this.dataSource = new MatTableDataSource<any>(this.companies);
 
       this.dataSource.paginator = this.paginator;

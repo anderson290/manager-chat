@@ -48,3 +48,26 @@ body {
     color: #707070;
   }
 }
+
+.btn-gradient {
+  background-image: linear-gradient(to right, #123b68, #588cc6);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  opacity: .9;
+  text-transform: uppercase;
+  transition: all .4s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    color: #ffffff;
+  }
+
+  &[disabled="true"] {
+    background-color: #e0e0e0;
+    color: #707070;
+  }
+}

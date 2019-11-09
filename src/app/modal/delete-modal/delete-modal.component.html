@@ -1,16 +1,10 @@
 <div class="modal-body">
-
-
-    <div class="center-object">
-        <div class="m-1em">
-            <div class="w-5em center-object" [inlineSVG]="'assets/icons/error.svg'"></div>
-
-        </div>
-
-        <h5 class="red-text">Deseja remover esta empresa?</h5>
-        <button type="button" (click)="close(true)" class="btn btn-outline-danger m-1em">Remover</button>
-        <button type="button" (click)="close(false)" class="btn btn-outline-dark m-1em">Cancelar</button>
+  <div class="center-object">
+    <div class="m-1em">
+      <div class="w-5em center-object" [inlineSVG]="'assets/icons/error.svg'"></div>
     </div>
-
-
+    <h5 class="red-text mb-5">Deseja remover esta empresa?</h5>
+    <button mat-button color="warn" type="button" (click)="close(true)" class="mr-2">Remover</button>
+    <button mat-button type="button" (click)="close(false)">Cancelar</button>
+  </div>
 </div>

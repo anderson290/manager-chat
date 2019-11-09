@@ -1,54 +1,45 @@
-<div class="float-right">
-    <div class="cursor add-icon" (click)="openCompanyModal()" [inlineSVG]="'assets/icons/add.svg'"></div>
-
-</div>
-
-<div class="container">
+<div class="app-list-company">
+  <div class="container">
     <div class="row mt-4">
-        <div class="col-12">
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                <ng-container matColumnDef="cnpj">
-                    <th mat-header-cell *matHeaderCellDef> CNPJ </th>
-                    <td mat-cell *matCellDef="let element"> {{element.cnpj}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Nome Empresa </th>
-                    <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="email">
-                    <th mat-header-cell *matHeaderCellDef> Email </th>
-                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="site">
-                    <th mat-header-cell *matHeaderCellDef> Site </th>
-                    <td mat-cell *matCellDef="let element"> {{element.site}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="edit">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element">
-                        <div class="w-1em cursor blue-fill" (click)="openCompanyModal(element._id, 'update')"
-                            [inlineSVG]="'assets/icons/edit.svg'"></div>
-                    </td>
-                </ng-container>
-
-                <ng-container matColumnDef="delete">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let element">
-                        <div class="cursor red-fill" (click)="openDeleteModal(element)"
-                         [inlineSVG]="'assets/icons/garbage.svg'"></div>
-                    </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
-        </div>
+      <div class="col-md-12 mb-4 ">
+        <button class="btn-gradient float-right" mat-button (click)="openCompanyModal()">
+          Adicionar Empresa <mat-icon>group_add</mat-icon>
+        </button>
+      </div>
+      <div class="col-md-12">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="cnpj">
+            <th mat-header-cell *matHeaderCellDef> CNPJ </th>
+            <td mat-cell *matCellDef="let element"> {{element.cnpj}} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nome Empresa </th>
+            <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+          <ng-container matColumnDef="site">
+            <th mat-header-cell *matHeaderCellDef> Site </th>
+            <td mat-cell *matCellDef="let element"> {{element.site}} </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-button mat-icon-button color="primary" style="color:#588cc6" matTooltip="Editar {{element.companyName}}" (click)="openCompanyModal(element._id, 'update')">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-button mat-icon-button color="warn" matTooltip="Remover {{element.companyName}}" (click)="openDeleteModal(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
     </div>
+  </div>
 </div>
