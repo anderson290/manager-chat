@@ -15,7 +15,7 @@
           <span [class]="ticket?.status == 'inProgress' ? 'text-success' : 'text-danger'">
             {{ticket?.status == 'inProgress' ? 'Em Progresso' : 'Encerrado'}}
           </span>
-          <p class="text-muted text-right b-bottom pb-2">20/09/2019</p>
+          <p class="text-muted text-right b-bottom pb-2"> {{ticket?.createdAt | date: 'dd/MM/yyyy'}}</p>
         </div>
       </div>
     </div>

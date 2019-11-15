@@ -59,7 +59,7 @@ export class UserComponent implements OnInit {
  
     modal.componentInstance.ticket = selectedTicket;
     modal.result.then(res=>{
-      // this.getCompanies();
+      this.getTickets();
     });
   }
 
