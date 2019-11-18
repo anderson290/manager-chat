@@ -14,6 +14,7 @@ export class CreateCompanyComponent implements OnInit {
 
   form: FormGroup;
   permissions:any;
+  hide: any;
   @Input() companyId;
 
   constructor(
