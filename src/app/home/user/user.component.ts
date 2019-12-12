@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ManagerService } from 'src/services/manager.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CloseTicketModalComponent } from 'src/app/modal/close-ticket-modal/close-ticket-modal/close-ticket-modal.component';
+import { ModalChartComponent } from 'src/app/modal/modal-chart/modal-chart.component';
 import { TicketService } from 'src/services/ticket.service';
 
 @Component({
@@ -17,14 +19,19 @@ export class UserComponent implements OnInit {
   conversation: any;
   message: string;
 
+  url: string = 'http://dashjuridico.herokuapp.com/public/dashboard/fda74e3b-3b93-43da-9624-d03465cf2a82';
+  urlSafe: SafeResourceUrl;
+
   constructor(
     private manageService: ManagerService,
     private ticketService: TicketService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    public sanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
     this.getTickets();
+    this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url + '?companyid=' + this.company._id);
   }
 
   getTickets(){
@@ -39,7 +46,6 @@ export class UserComponent implements OnInit {
 
   changeConversation(ticket){
     this.conversation = ticket.conversation;
-    console.log(this.conversation);
     this.ticket = ticket;
   }
 
@@ -56,11 +62,16 @@ export class UserComponent implements OnInit {
 
   closeTicket(selectedTicket){
     let modal = this.modalService.open(CloseTicketModalComponent);
- 
+
     modal.componentInstance.ticket = selectedTicket;
     modal.result.then(res=>{
       this.getTickets();
     });
+  }
+
+  modalChart(urlIframe){
+    let modal = this.modalService.open(ModalChartComponent);
+    modal.componentInstance.urlIframe = urlIframe;
   }
 
 }

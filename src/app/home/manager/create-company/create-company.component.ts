@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ManagerService } from 'src/services/manager.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { isCNPJ, formatToCNPJ } from 'brazilian-values';
 
 @Component({
   selector: 'app-create-company',
@@ -53,6 +54,13 @@ export class CreateCompanyComponent implements OnInit {
     });
   }
 
+  cnpjValidate(value) {
+    if (isCNPJ(value)){
+      console.log('true');
+    }else{
+      console.log('falso');
+    }
+  }
 
   getCompanyById() {
 

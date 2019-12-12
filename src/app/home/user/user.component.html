@@ -5,7 +5,8 @@
       <div class="tickets">
         <div class="ticket-header">
           <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/ticket.svg'"></div>
-          <div class="center-object ticket-icon" [inlineSVG]="'assets/icons/pie-chart.svg'"></div>
+          <div class="center-object ticket-icon" (click)="modalChart(urlSafe)"
+            [inlineSVG]="'assets/icons/pie-chart.svg'"></div>
         </div>
         <div class="ticket-item" *ngFor="let ticket of tickets; let i = index;" (click)="changeConversation(ticket)">
           <button class="cursor float-right" mat-button mat-icon-button color="warn" (click)="closeTicket(ticket)">
@@ -31,7 +32,7 @@
         </div>
         <mat-form-field appearance="standard" class="w-100 px-4">
           <input matInput type="text" [(ngModel)]="message" (keyup.enter)="sendMessage()"
-            placeholder="Digite uma mensagem...">
+            placeholder="Digite uma mensagem..." autocomplete="off">
         </mat-form-field>
       </div>
     </div>

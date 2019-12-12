@@ -10,13 +10,13 @@
         <div class="form-row">
           <mat-form-field class="w-100" appearance="standard">
             <mat-label>E-mail</mat-label>
-            <input matInput type="email" placeholder="Digite seu E-mail" formControlName="email">
+            <input matInput type="email" placeholder="Digite seu E-mail" formControlName="email" autocomplete="off">
             <mat-icon matSuffix> person </mat-icon>
           </mat-form-field>
           <mat-form-field class="w-100" appearance="standard">
             <mat-label>Senha</mat-label>
             <input matInput placeholder="Digite a senha" formControlName="password"
-              [type]="!hide ? 'password' : 'text'">
+              [type]="!hide ? 'password' : 'text'" autocomplete="off">
             <button type="button" mat-icon-button matSuffix [disabled]="!form.controls['password'].value"
               (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

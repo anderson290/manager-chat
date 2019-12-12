@@ -15,7 +15,7 @@
         </mat-form-field>
         <mat-form-field class="col-12 col-md-4" appearance="standard">
           <mat-label>CNPJ</mat-label>
-          <input type="text" matInput placeholder="Digite o CNPJ" formControlName="cnpj">
+          <input type="text" matInput placeholder="Digite o CNPJ" (keyup)="cnpjValidate(form.controls['cnpj'].value)" formControlName="cnpj" mask="00.000.000/0000-00">
         </mat-form-field>
       </div>
       <div class="form-row">
@@ -31,7 +31,7 @@
       <div class="form-row">
         <mat-form-field class="col-12 col-md-4" appearance="standard">
           <mat-label>Telefone</mat-label>
-          <input type="text" matInput placeholder="Digite o Telefone" formControlName="phoneNumber">
+          <input type="text" matInput placeholder="Digite o Telefone" formControlName="phoneNumber" mask="(00) 00000-0000">
         </mat-form-field>
         <mat-form-field class="col-12 col-md-8" appearance="standard">
           <mat-label>Site da Empresa</mat-label>

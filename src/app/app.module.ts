@@ -18,12 +18,13 @@ import { ManagerService } from 'src/services/manager.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/services/auth.service';
 import { NavComponent } from './home/nav/nav.component';
-import { TicketsComponent } from './home/user/tickets/tickets.component';
-import { ChartsComponent } from './home/user/charts/charts.component';
 import { DeleteModalComponent } from './modal/delete-modal/delete-modal.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CloseTicketModalComponent } from './modal/close-ticket-modal/close-ticket-modal/close-ticket-modal.component';
 import { TicketService } from 'src/services/ticket.service';
+import { ModalChartComponent } from './modal/modal-chart/modal-chart.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxMaskModule } from 'ngx-mask'
 
 @NgModule({
   declarations: [
@@ -35,10 +36,9 @@ import { TicketService } from 'src/services/ticket.service';
     CreateCompanyComponent,
     ListCompanyComponent,
     NavComponent,
-    TicketsComponent,
-    ChartsComponent,
     DeleteModalComponent,
-    CloseTicketModalComponent
+    CloseTicketModalComponent,
+    ModalChartComponent
   ],
   imports: [
     BrowserModule,
@@ -49,13 +49,16 @@ import { TicketService } from 'src/services/ticket.service';
     ReactiveFormsModule,
     SvgModule,
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxMaskModule.forRoot(),
+    NgxSpinnerModule
 
   ],
   entryComponents: [
     CreateCompanyComponent,
     DeleteModalComponent,
-    CloseTicketModalComponent
+    CloseTicketModalComponent,
+    ModalChartComponent
   ],
   providers: [
     ManagerService,

@@ -33,7 +33,6 @@ export class AuthService implements CanActivate {
       if (res.status == 404) {
         console.log('ERRO');
       } else {
-        console.log(res);
         localStorage.setItem('company', JSON.stringify(res));
         this.route.navigate(['/home']);
       }
